@@ -18,37 +18,9 @@ import butterknife.OnClick;
 public class BasicActivity extends AppCompatActivity
 {
     @BindView(R.id.recycler)
-    RecyclerView mRecyclerView;
+    RecyclerView cardsView;
 
-    CardAdapter adapter;
-
-    DoomtownDbAccess.CallbackOnCards mCardResult = new DoomtownDbAccess.CallbackOnCards()
-    {
-        @Override
-        public void success(List<CardModel> result)
-        {
-            Snackbar.make(BasicActivity.this.findViewById(R.id.fab), "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            adapter = new CardAdapter(result);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(BasicActivity.this);
-            mRecyclerView.setLayoutManager(layoutManager);
-            mRecyclerView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void failure()
-        {
-
-        }
-    };
-
-    @OnClick(R.id.fab)
-    public void fabClick()
-    {
-        DoomtownDbAccess doomtownDbAccess = new DoomtownDbAccess();
-        doomtownDbAccess.sendServerRequestCardList(mCardResult);
-    }
-
+    CardAdapter cardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,7 +28,36 @@ public class BasicActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+
+    @OnClick(R.id.fab)
+    public void fabClick()
+    {
+        Snackbar.make(BasicActivity.this.findViewById(R.id.fab), "Downloading card data", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        DoomtownDbAccess doomtownDbAccess = new DoomtownDbAccess();
+        doomtownDbAccess.sendServerRequestCardList(cardResult);
+    }
+
+    DoomtownDbAccess.CallbackOnCards cardResult = new DoomtownDbAccess.CallbackOnCards()
+    {
+        @Override
+        public void success(List<CardModel> result)
+        {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(BasicActivity.this);
+            cardsView.setLayoutManager(layoutManager);
+
+            cardAdapter = new CardAdapter(result);
+            cardsView.setAdapter(cardAdapter);
+
+            cardAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void failure()
+        {
+            Snackbar.make(BasicActivity.this.findViewById(R.id.fab), "Failed to download card data", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        }
+    };
 }

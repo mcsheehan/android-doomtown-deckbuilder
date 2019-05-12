@@ -17,11 +17,11 @@ public class DoomtownDbAccess
         void failure();
     }
 
-    private Retrofit mRetrofit;
+    private Retrofit retrofit;
 
     public DoomtownDbAccess()
     {
-        mRetrofit = getRetrofitDtDbApi();
+        retrofit = getRetrofitDtDbApi();
     }
 
     private Retrofit getRetrofitDtDbApi()
@@ -41,7 +41,7 @@ public class DoomtownDbAccess
 
     public void sendServerRequestCardList(CallbackOnCards callbackCards)
     {
-        GetCardsService               service      = mRetrofit.create(GetCardsService.class);
+        GetCardsService               service      = retrofit.create(GetCardsService.class);
         Call<List<CardModel>>         call         = service.getFullCardList();
         CardCallbackToRetrofitAdapter cardCallback = new CardCallbackToRetrofitAdapter(callbackCards);
         call.enqueue(cardCallback);
@@ -49,23 +49,23 @@ public class DoomtownDbAccess
 
     class CardCallbackToRetrofitAdapter implements Callback<List<CardModel>>
     {
-        CallbackOnCards mCardCallback;
+        CallbackOnCards cardCallback;
 
         public CardCallbackToRetrofitAdapter(CallbackOnCards callbackCards)
         {
-            mCardCallback = callbackCards;
+            cardCallback = callbackCards;
         }
 
         @Override
         public void onFailure(Call call, Throwable t) {
-            mCardCallback.failure();
+            cardCallback.failure();
         }
 
         @Override
         public void onResponse(Call<List<CardModel>> call, Response<List<CardModel>> response)
         {
             List<CardModel> cardList = response.body();
-            mCardCallback.success(cardList);
+            cardCallback.success(cardList);
         }
     }
 

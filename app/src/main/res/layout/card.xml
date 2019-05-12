@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:text="Ranch"
+                android:text="Card name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
                 android:layout_width="58dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:text="10"
+                android:text="00"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:layout_editor_absoluteY="0dp"/>
