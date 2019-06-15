@@ -1,13 +1,14 @@
 package uk.co.marksheehan.doomtowndeckbuilder;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mark.doomtowndeckbuilder.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,12 +25,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     {
         public TextView cost;
         public TextView cardName;
+        public ImageView cardImage;
 
         public CardViewHolder(View itemView)
         {
             super(itemView);
             cardName = itemView.findViewById(R.id.cardName);
             cost = itemView.findViewById(R.id.cost);
+            cardImage = itemView.findViewById(R.id.cardImage);
         }
     }
 
@@ -50,10 +53,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
         holder.cardName.setText(currentCard.title);
         holder.cost.setText(cost);
+
+        String fullImagePath = "https://dtdb.co" + currentCard.imagesrc;
+        Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(holder.cardImage);
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return mItemList.size();
     }
 }

@@ -11,20 +11,9 @@ import retrofit2.http.GET;
 
 public class DoomtownDbAccess
 {
-    public interface CallbackOnCards
-    {
-        void success(List<CardModel> result);
-        void failure();
-    }
+    private Retrofit doomtownRestApi;
 
-    private Retrofit retrofit;
-
-    public DoomtownDbAccess()
-    {
-        retrofit = getRetrofitDtDbApi();
-    }
-
-    private Retrofit getRetrofitDtDbApi()
+    private Retrofit createDoomtownRestApi()
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://dtdb.co/api/")
@@ -33,32 +22,41 @@ public class DoomtownDbAccess
         return retrofit;
     }
 
+    public DoomtownDbAccess()
+    {
+        doomtownRestApi = createDoomtownRestApi();
+    }
+
     interface GetCardsService
     {
         @GET("cards")
         Call<List<CardModel>> getFullCardList();
+
+        @GET("photo")
+        Call<List<CardModel>> getPhotoList();
     }
 
-    public void sendServerRequestCardList(CallbackOnCards callbackCards)
+    public interface CardQueryCallback
     {
-        GetCardsService               service      = retrofit.create(GetCardsService.class);
+        void success(List<CardModel> result);
+        void failure();
+    }
+
+    public void sendServerRequestCardList(CardQueryCallback cardQueryCallback)
+    {
+        GetCardsService               service      = doomtownRestApi.create(GetCardsService.class);
         Call<List<CardModel>>         call         = service.getFullCardList();
-        CardCallbackToRetrofitAdapter cardCallback = new CardCallbackToRetrofitAdapter(callbackCards);
+        CardCallbackImplementation cardCallback = new CardCallbackImplementation(cardQueryCallback);
         call.enqueue(cardCallback);
     }
 
-    class CardCallbackToRetrofitAdapter implements Callback<List<CardModel>>
+    class CardCallbackImplementation implements Callback<List<CardModel>>
     {
-        CallbackOnCards cardCallback;
+        CardQueryCallback cardCallback;
 
-        public CardCallbackToRetrofitAdapter(CallbackOnCards callbackCards)
+        public CardCallbackImplementation(CardQueryCallback callbackCards)
         {
             cardCallback = callbackCards;
-        }
-
-        @Override
-        public void onFailure(Call call, Throwable t) {
-            cardCallback.failure();
         }
 
         @Override
@@ -67,11 +65,11 @@ public class DoomtownDbAccess
             List<CardModel> cardList = response.body();
             cardCallback.success(cardList);
         }
-    }
 
-    public interface DownloadImage
-    {
-        @GET("web/bundles/dtdbcards/images/mCardResult/en/00024.jpg")
-        Call<List<CardModel>> getImage();
+        @Override
+        public void onFailure(Call call, Throwable t)
+        {
+            cardCallback.failure();
+        }
     }
 }

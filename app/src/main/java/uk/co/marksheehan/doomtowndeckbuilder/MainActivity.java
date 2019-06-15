@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 import com.example.mark.doomtowndeckbuilder.R;
 
@@ -15,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BasicActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
 {
     @BindView(R.id.recycler)
     RecyclerView cardsView;
@@ -26,8 +27,10 @@ public class BasicActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basic);
+
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
@@ -35,29 +38,28 @@ public class BasicActivity extends AppCompatActivity
     @OnClick(R.id.fab)
     public void fabClick()
     {
-        Snackbar.make(BasicActivity.this.findViewById(R.id.fab), "Downloading card data", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(MainActivity.this.findViewById(R.id.fab), R.string.downloading_card_data, Snackbar.LENGTH_LONG).show();
         DoomtownDbAccess doomtownDbAccess = new DoomtownDbAccess();
         doomtownDbAccess.sendServerRequestCardList(cardResult);
     }
 
-    DoomtownDbAccess.CallbackOnCards cardResult = new DoomtownDbAccess.CallbackOnCards()
+    DoomtownDbAccess.CardQueryCallback cardResult = new DoomtownDbAccess.CardQueryCallback()
     {
         @Override
         public void success(List<CardModel> result)
         {
-            LinearLayoutManager layoutManager = new LinearLayoutManager(BasicActivity.this);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
             cardsView.setLayoutManager(layoutManager);
 
             cardAdapter = new CardAdapter(result);
             cardsView.setAdapter(cardAdapter);
-
             cardAdapter.notifyDataSetChanged();
         }
 
         @Override
         public void failure()
         {
-            Snackbar.make(BasicActivity.this.findViewById(R.id.fab), "Failed to download card data", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            Snackbar.make(MainActivity.this.findViewById(R.id.fab), R.string.internet_connection_failure, Snackbar.LENGTH_LONG).show();
         }
     };
 }
