@@ -1,4 +1,4 @@
-package uk.co.marksheehan.doomtowndeckbuilder;
+package net.marksheehan.doomtowndeckbuilder;
 
 import com.squareup.picasso.Picasso;
 
