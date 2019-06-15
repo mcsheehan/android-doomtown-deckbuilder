@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "co.uk.marksheehan.doomtowndeckbuilder"
+        applicationId "net.marksheehan.doomtowndeckbuilder"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1

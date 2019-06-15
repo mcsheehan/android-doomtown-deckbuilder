@@ -1,4 +1,4 @@
-package uk.co.marksheehan.doomtowndeckbuilder;
+package net.marksheehan.doomtowndeckbuilder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

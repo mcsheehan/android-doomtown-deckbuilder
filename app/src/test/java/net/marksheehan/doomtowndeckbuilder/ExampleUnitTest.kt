@@ -1,4 +1,4 @@
-package com.example.mark.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

@@ -1,5 +1,4 @@
-package uk.co.marksheehan.doomtowndeckbuilder;
-
+package net.marksheehan.doomtowndeckbuilder;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package uk.co.marksheehan.doomtowndeckbuilder;
+package net.marksheehan.doomtowndeckbuilder;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
