@@ -59,7 +59,7 @@ public class DoomtownDbAccessTest
 
         Assert.assertTrue(cardCallback.cardList.size() > 600);
 
-        String firstCardTitle = cardCallback.cardList.get(0).title;
+        String firstCardTitle = cardCallback.cardList.get(0).getTitle();
         Assert.assertEquals(EXPECTED_NAME_OF_FIRST_CARD, firstCardTitle);
     }
 
@@ -70,11 +70,11 @@ public class DoomtownDbAccessTest
         GetCardsFromApiAsync cardCallback = new GetCardsFromApiAsync();
         cardCallback.waitForLock10Seconds();
 
-        String imageUrl = cardCallback.cardList.get(0).imagesrc;
+        String imageUrl = cardCallback.cardList.get(0).getImagesrc();
 
         for (CardModel card : cardCallback.cardList)
         {
-            System.out.println(card.imagesrc);
+            System.out.println(card.getImagesrc());
         }
 
         Assert.assertTrue(true);

@@ -49,12 +49,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     {
         final CardModel currentCard = mItemList.get(position);
 
-        String cost = "" + currentCard.cost;
+        String cost = "" + currentCard.getCost();
 
-        holder.cardName.setText(currentCard.title);
+        holder.cardName.setText(currentCard.getTitle());
         holder.cost.setText(cost);
 
-        String fullImagePath = "https://dtdb.co" + currentCard.imagesrc;
+        String fullImagePath = "https://dtdb.co" + currentCard.getImagesrc();
         Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(holder.cardImage);
     }
 
