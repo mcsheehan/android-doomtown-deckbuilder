@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 
 import com.example.mark.doomtowndeckbuilder.R
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var cost: TextView
-        var cardName: TextView
         var cardImage: ImageView
 
+        val onItemClicked = View.OnClickListener { view: View ->
+            val title = mItemList.get(adapterPosition).title
+            Snackbar.make(view, "$title", Snackbar.LENGTH_LONG).show()
+        }
+
         init {
-            cardName = itemView.findViewById(R.id.cardName)
-            cost = itemView.findViewById(R.id.cost)
             cardImage = itemView.findViewById(R.id.cardImage)
+            itemView.setOnClickListener(onItemClicked)
         }
     }
 
@@ -31,11 +33,6 @@ class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val currentCard = mItemList[position]
-
-        val cost = "" + currentCard.cost
-
-        holder.cardName.text = currentCard.title
-        holder.cost.text = cost
 
         val fullImagePath = "https://dtdb.co" + currentCard.imagesrc!!
         Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(holder.cardImage)
