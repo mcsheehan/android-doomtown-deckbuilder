@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="net.marksheehan.doomtowndeckbuilder.MainActivity"
+            android:name="net.marksheehan.doomtowndeckbuilder.ActualMain"
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

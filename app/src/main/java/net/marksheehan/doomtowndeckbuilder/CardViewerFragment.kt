@@ -1,17 +1,18 @@
 package net.marksheehan.doomtowndeckbuilder
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 
 import com.example.mark.doomtowndeckbuilder.R
 
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_viewer_fragment.*
 import kotlinx.android.synthetic.main.card_list.*
 
-class MainActivity : AppCompatActivity() {
+class CardViewerFragment : Fragment() {
 
     internal lateinit var cardAdapter: CardAdapter
 
@@ -31,22 +32,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun failure() {
-            Snackbar.make(this@MainActivity.findViewById<View>(R.id.fab), R.string.internet_connection_failure, Snackbar.LENGTH_LONG).show()
+            Snackbar.make(this@CardViewerFragment.view!!.findViewById(R.id.fab), R.string.internet_connection_failure, Snackbar.LENGTH_LONG);
+//            Snackbar.make(this@CardViewerFragment.findViewById<View>(R.id.fab), R.string.internet_connection_failure, Snackbar.LENGTH_LONG).show()
         }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.card_viewer_fragment, container, false);
     }
 
     val fabClick = View.OnClickListener { view: View ->
         Snackbar.make(view, R.string.downloading_card_data, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_main)
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         fab.setOnClickListener(fabClick)
 
         val doomtownDbAccess = DoomtownDbAccess()

@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar
 
 import com.example.mark.doomtowndeckbuilder.R
 
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_viewer_fragment.*
 import kotlinx.android.synthetic.main.card_list.*
 
 class ActualMain : AppCompatActivity() {
@@ -26,21 +26,21 @@ class ActualMain : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        setContentView(R.layout.activity_main)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.newlayout)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val host = NavHostFragment.create(R.navigation.navigation_graph)
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, host).setPrimaryNavigationFragment(host).commit()
-
+//        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+//        setSupportActionBar(toolbar)
+//
+//        val host = NavHostFragment.create(R.navigation.navigation_graph)
+//        supportFragmentManager.beginTransaction().replace(R.id.blankFragment, host).setPrimaryNavigationFragment(host).commit()
+//
 //        val navController = NavHostFragment.findNavController(R.id.navigation_graph)
 //        NavigationUI.setupActionBarWithNavController(navController)
 
-        fab.setOnClickListener(fabClick)
-
-        val doomtownDbAccess = DoomtownDbAccess()
-        doomtownDbAccess.sendServerRequestCardList(cardResult)
+//        fab.setOnClickListener(fabClick)
+//
+//        val doomtownDbAccess = DoomtownDbAccess()
+//        doomtownDbAccess.sendServerRequestCardList(cardResult)
     }
 }
