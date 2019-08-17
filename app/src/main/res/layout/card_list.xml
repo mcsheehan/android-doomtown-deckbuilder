@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="net.marksheehan.doomtowndeckbuilder.MainActivity"
-    tools:showIn="@layout/activity_main">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/card_recycler"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="12dp"
-        tools:listitem="@layout/card"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
+        tools:showIn="@layout/card_viewer_fragment" android:orientation="vertical"
+>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/card_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/card" app:layoutManager="GridLayoutManager" app:spanCount="3"
+            android:clipToPadding="false"
+    />
+
+</LinearLayout>

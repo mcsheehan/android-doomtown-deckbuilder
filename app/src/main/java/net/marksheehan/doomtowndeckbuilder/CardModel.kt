@@ -1,8 +1,10 @@
 package net.marksheehan.doomtowndeckbuilder
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class CardModel {
+class CardModel() : Parcelable {
     @SerializedName("last-modified")
     var lastModified: String? = null
 
@@ -36,4 +38,68 @@ class CardModel {
 
     var url: String? = null
     var imagesrc: String? = null
+
+    constructor(parcel: Parcel) : this() {
+        lastModified = parcel.readString()
+        code = parcel.readString()
+        title = parcel.readString()
+        type = parcel.readString()
+        typeCode = parcel.readString()
+        suit = parcel.readString()
+        keywords = parcel.readString()
+        text = parcel.readString()
+        cost = parcel.readLong()
+        gang = parcel.readString()
+        gang_code = parcel.readString()
+        gang_letter = parcel.readString()
+        number = parcel.readLong()
+        quantity = parcel.readLong()
+        rank = parcel.readLong()
+        upkeep = parcel.readLong()
+        bullets = parcel.readLong()
+        influence = parcel.readLong()
+        control = parcel.readLong()
+        wealth = parcel.readLong()
+        url = parcel.readString()
+        imagesrc = parcel.readString()
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(lastModified)
+        parcel.writeString(code)
+        parcel.writeString(title)
+        parcel.writeString(type)
+        parcel.writeString(typeCode)
+        parcel.writeString(suit)
+        parcel.writeString(keywords)
+        parcel.writeString(text)
+        parcel.writeLong(cost)
+        parcel.writeString(gang)
+        parcel.writeString(gang_code)
+        parcel.writeString(gang_letter)
+        parcel.writeLong(number)
+        parcel.writeLong(quantity)
+        parcel.writeLong(rank)
+        parcel.writeLong(upkeep)
+        parcel.writeLong(bullets)
+        parcel.writeLong(influence)
+        parcel.writeLong(control)
+        parcel.writeLong(wealth)
+        parcel.writeString(url)
+        parcel.writeString(imagesrc)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<CardModel> {
+        override fun createFromParcel(parcel: Parcel): CardModel {
+            return CardModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<CardModel?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
