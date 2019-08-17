@@ -3,16 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/cardViewerFragment2">
+    app:startDestination="@id/cardViewerFragment">
 
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="net.marksheehan.doomtowndeckbuilder.BlankFragment"
-        android:label="BlankFragment" />
-    <fragment android:id="@+id/placeholder" />
-    <fragment
-        android:id="@+id/cardViewerFragment2"
+        android:id="@+id/cardViewerFragment"
         android:name="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
         android:label="card_viewer_fragment"
-        tools:layout="@layout/card_viewer_fragment" />
+        tools:layout="@layout/card_list">
+        <action
+            android:id="@+id/action_cardViewerFragment_to_individualCardViewer"
+            app:destination="@id/individualCardView"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/individualCardView"
+        android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
+        android:label="individual_card_view">
+        <argument
+            android:name="card"
+            app:argType="net.marksheehan.doomtowndeckbuilder.CardModel" />
+    </fragment>
 </navigation>

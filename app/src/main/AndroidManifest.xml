@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.mark.doomtowndeckbuilder">
+          package="net.marksheehan.doomtowndeckbuilder">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="net.marksheehan.doomtowndeckbuilder.ActualMain"
+            android:name="net.marksheehan.doomtowndeckbuilder.MainNavHostActivity"
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

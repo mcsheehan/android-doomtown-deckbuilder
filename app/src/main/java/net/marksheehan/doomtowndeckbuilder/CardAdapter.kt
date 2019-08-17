@@ -1,12 +1,15 @@
 package net.marksheehan.doomtowndeckbuilder
 
+import android.os.Bundle
+import android.os.Parcelable
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.Navigation
 
-import com.example.mark.doomtowndeckbuilder.R
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
@@ -15,9 +18,14 @@ class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardImage: ImageView
 
-        val onItemClicked = View.OnClickListener { view: View ->
-            val title = mItemList.get(adapterPosition).title
+        val onItemClicked = OnClickListener { view: View ->
+            val currentCard = mItemList.get(adapterPosition)
+            val title = currentCard.title
             Snackbar.make(view, "$title", Snackbar.LENGTH_LONG).show()
+            var bundle = Bundle()
+
+            bundle.putParcelable(null, currentCard)
+            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)
         }
 
         init {
