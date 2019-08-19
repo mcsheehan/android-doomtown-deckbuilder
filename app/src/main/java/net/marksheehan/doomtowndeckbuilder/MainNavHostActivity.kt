@@ -11,6 +11,6 @@ class MainNavHostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.newlayout)
+        setContentView(R.layout.navigation_host)
     }
 }

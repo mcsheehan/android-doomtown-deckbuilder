@@ -11,11 +11,14 @@
 >
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/card_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/card" app:layoutManager="GridLayoutManager" app:spanCount="3"
-            android:clipToPadding="false"
-    />
+        android:id="@+id/card_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingLeft="30px"
+        android:paddingTop="30px"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/card" />
 
 </LinearLayout>
