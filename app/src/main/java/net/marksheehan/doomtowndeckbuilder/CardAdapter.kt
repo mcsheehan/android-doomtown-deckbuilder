@@ -43,7 +43,7 @@ class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter
         val currentCard = mItemList[position]
 
         val fullImagePath = "https://dtdb.co" + currentCard.imagesrc!!
-        Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(holder.cardImage)
+        Picasso.get().load(fullImagePath).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(holder.cardImage)
     }
 
     override fun getItemCount(): Int {
