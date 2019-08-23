@@ -22,4 +22,17 @@
             android:name="card"
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
     </fragment>
+    <fragment android:id="@+id/chooseDecks" >
+        <action
+            android:id="@+id/action_chooseDecks_to_cardViewerFragment"
+            app:destination="@id/cardViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseIdentity"
+        android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment" >
+        <action
+            android:id="@+id/action_chooseIdentity_to_chooseCards"
+            app:destination="@id/chooseCards" />
+    </fragment>
+    <fragment android:id="@+id/chooseCards" />
 </navigation>
