@@ -1,6 +1,7 @@
 package net.marksheehan.doomtowndeckbuilder;
 
-import com.squareup.picasso.Picasso;
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel;
+import net.marksheehan.doomtowndeckbuilder.internetdatabase.DoomtownDbAccess;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,9 +9,6 @@ import org.junit.Test;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
 
 public class DoomtownDbAccessTest
 {

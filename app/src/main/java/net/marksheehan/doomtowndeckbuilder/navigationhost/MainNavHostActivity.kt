@@ -1,8 +1,9 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.navigationhost
 
 import androidx.navigation.Navigation.findNavController
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import net.marksheehan.doomtowndeckbuilder.R
 
 class MainNavHostActivity : AppCompatActivity() {
 

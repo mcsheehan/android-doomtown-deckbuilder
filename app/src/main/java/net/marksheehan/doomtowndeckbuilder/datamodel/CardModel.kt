@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.datamodel
 
 import android.os.Parcel
 import android.os.Parcelable

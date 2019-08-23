@@ -1,5 +1,6 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.internetdatabase
 
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
