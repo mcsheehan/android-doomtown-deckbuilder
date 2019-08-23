@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
-class ParseCardListFromJsonFile{
+class ParseCardListFromJsonFileUsingGson{
 
     companion object {
 
