@@ -12,11 +12,7 @@
         tools:layout="@layout/card_list">
         <action
             android:id="@+id/action_cardViewerFragment_to_individualCardViewer"
-            app:destination="@id/individualCardView"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/individualCardView" />
     </fragment>
     <fragment
         android:id="@+id/individualCardView"
@@ -24,6 +20,6 @@
         android:label="individual_card_view">
         <argument
             android:name="card"
-            app:argType="net.marksheehan.doomtowndeckbuilder.CardModel" />
+            app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
     </fragment>
 </navigation>
