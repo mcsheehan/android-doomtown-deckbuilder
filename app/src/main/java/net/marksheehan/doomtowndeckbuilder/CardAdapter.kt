@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 

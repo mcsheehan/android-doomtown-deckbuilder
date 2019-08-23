@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fullscreen_card.*
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 class FullScreenCardFragment : Fragment() {
 
@@ -24,13 +25,4 @@ class FullScreenCardFragment : Fragment() {
         val fullImagePath = "https://dtdb.co" + currentCard!!.imagesrc
         Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(fullscreencard)
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
-
 }
