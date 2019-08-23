@@ -23,6 +23,6 @@ class FullScreenCardFragment : Fragment() {
         val currentCard : CardModel? = arguments?.getParcelable(null)
 
         val fullImagePath = "https://dtdb.co" + currentCard!!.imagesrc
-        Picasso.get().load(fullImagePath).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_foreground).into(fullscreencard)
+        Picasso.get().load(fullImagePath).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(fullscreencard)
     }
 }
