@@ -64,7 +64,7 @@ class TestClass {
                 .build()
         var context = InstrumentationRegistry.getInstrumentation().context
 
-        var cards = ParseCardListFromJsonFile.parseCardsFromMoshi(context)
+//        var cards = ParseCardListFromJsonFile.parseCardsFromMoshi(context)
 
 //        val okHttpClientBuilder = OkHttpClient.Builder()
 //                .readTimeout(30, TimeUnit.SECONDS)
