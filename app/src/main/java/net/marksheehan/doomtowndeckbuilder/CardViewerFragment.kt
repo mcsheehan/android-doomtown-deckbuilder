@@ -1,17 +1,14 @@
 package net.marksheehan.doomtowndeckbuilder
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.snackbar.Snackbar
 import androidx.fragment.app.Fragment
 
 import kotlinx.android.synthetic.main.card_list.*
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
-import net.marksheehan.doomtowndeckbuilder.internetdatabase.DoomtownDbAccess
-import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFile
+import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 
 class CardViewerFragment : Fragment() {
 
@@ -22,7 +19,7 @@ class CardViewerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val cardModel : List<CardModel> = ParseCardListFromJsonFile.parseCardListFromAssetFile(context!!,"card_list.json")
+        val cardModel : List<CardModel> = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context!!,"card_list.json")
 
         cardAdapter = CardAdapter(cardModel)
         card_recycler.adapter = cardAdapter
