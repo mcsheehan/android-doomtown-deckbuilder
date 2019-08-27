@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.adapters
 
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.navigation.Navigation
 
 import com.squareup.picasso.Picasso
+import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {

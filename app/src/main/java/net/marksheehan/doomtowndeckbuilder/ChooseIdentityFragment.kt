@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.choose_identity.*
@@ -12,7 +11,8 @@ import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
-import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
+import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
+import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
 class ChooseIdentityFragment : Fragment()
 {

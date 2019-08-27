@@ -1,11 +1,10 @@
-package net.marksheehan.doomtowndeckbuilder.navigationhost
+package net.marksheehan.doomtowndeckbuilder
 
 import androidx.navigation.Navigation.findNavController
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import net.marksheehan.doomtowndeckbuilder.DoomtownCardsViewModel
-import net.marksheehan.doomtowndeckbuilder.R
+import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
 class MainNavHostActivity : AppCompatActivity() {
 
