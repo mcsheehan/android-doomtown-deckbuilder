@@ -17,7 +17,8 @@
     <fragment
         android:id="@+id/individualCardView"
         android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
-        android:label="individual_card_view">
+        android:label="individual_card_view"
+        tools:layout="@layout/fullscreen_card">
         <argument
             android:name="card"
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
@@ -29,7 +30,8 @@
     </fragment>
     <fragment
         android:id="@+id/chooseIdentity"
-        android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment" >
+        android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment"
+        tools:layout="@layout/choose_identity">
         <action
             android:id="@+id/action_chooseIdentity_to_chooseCards"
             app:destination="@id/chooseCards" />
