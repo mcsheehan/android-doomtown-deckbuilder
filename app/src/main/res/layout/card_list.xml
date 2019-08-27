@@ -7,8 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
-        tools:showIn="@layout/card_viewer_fragment" android:orientation="vertical"
->
+        tools:showIn="@layout/activity_layout" android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_recycler"

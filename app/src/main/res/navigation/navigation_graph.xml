@@ -8,18 +8,46 @@
     <fragment
         android:id="@+id/cardViewerFragment"
         android:name="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
-        android:label="card_viewer_fragment"
+        android:label="Card Viewer"
         tools:layout="@layout/card_list">
         <action
             android:id="@+id/action_cardViewerFragment_to_individualCardViewer"
-            app:destination="@id/individualCardView" />
+            app:destination="@id/individualCardView"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/individualCardView"
         android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
-        android:label="individual_card_view">
+        android:label="Large card"
+        tools:layout="@layout/fullscreen_card">
         <argument
             android:name="card"
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
     </fragment>
+    <fragment android:id="@+id/chooseDecks" >
+        <action
+            android:id="@+id/action_chooseDecks_to_cardViewerFragment"
+            app:destination="@id/cardViewerFragment" />
+        <action
+            android:id="@+id/action_chooseDecks_to_chooseIdentity"
+            app:destination="@id/chooseIdentity" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseIdentity"
+        android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment"
+        tools:layout="@layout/choose_identity">
+        <action
+            android:id="@+id/action_chooseIdentity_to_chooseCards"
+            app:destination="@id/chooseCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseCards"
+        android:name="net.marksheehan.doomtowndeckbuilder.ChooseCardsFragment"
+        tools:layout="@layout/choose_cards">
+    </fragment>
+
+    <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
 </navigation>
