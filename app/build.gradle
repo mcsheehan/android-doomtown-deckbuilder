@@ -81,4 +81,5 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:4.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 }

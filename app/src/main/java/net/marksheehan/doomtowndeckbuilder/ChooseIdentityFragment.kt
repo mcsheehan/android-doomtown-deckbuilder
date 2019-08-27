@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.choose_identity.*
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -39,9 +40,10 @@ class ChooseIdentityFragment : Fragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val cardModel : List<CardModel> = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context!!,"card_list.json")
+        val cards= ViewModelProviders.of(activity!!,
+                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cards
 
-        outfitCardList = cardModel.filter { it.type == "Outfit" }
+        outfitCardList = cards.filter { it.type == "Outfit" }
 
         identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
 
