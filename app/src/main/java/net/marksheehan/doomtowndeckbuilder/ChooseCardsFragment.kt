@@ -6,23 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
-import kotlinx.android.synthetic.main.card_list.*
-import net.marksheehan.doomtowndeckbuilder.adapters.CardAdapter
 import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
-class CardViewerFragment : Fragment() {
+class ChooseCardsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.card_list, container, false)
+        return inflater.inflate(R.layout.choose_cards, container, false);
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        var cards= ViewModelProviders.of(activity!!,
+        val cards= ViewModelProviders.of(activity!!,
                 DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cards
-        cards = cards.sortedByDescending { it.suit }
-        val cardAdapter = CardAdapter(cards)
-        card_recycler.adapter = cardAdapter
     }
+
 }

@@ -2,6 +2,7 @@ package net.marksheehan.doomtowndeckbuilder
 
 import androidx.navigation.Navigation.findNavController
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 
@@ -30,8 +31,8 @@ class MainNavHostActivity : AppCompatActivity() {
         cardViewModel = ViewModelProviders.of(this,
                 DoomtownCardsViewModel.DoomtownCardsViewModelFactory(applicationContext))[DoomtownCardsViewModel::class.java]
 
-
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
+        //TODO Add drawer layout to the app bar configuration
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setSupportActionBar(toolbar)
 
