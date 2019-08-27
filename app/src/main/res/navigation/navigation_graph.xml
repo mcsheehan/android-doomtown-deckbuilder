@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/cardViewerFragment"
         android:name="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
-        android:label="card_viewer_fragment"
+        android:label="Card Viewer"
         tools:layout="@layout/card_list">
         <action
             android:id="@+id/action_cardViewerFragment_to_individualCardViewer"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/individualCardView"
         android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
-        android:label="individual_card_view"
+        android:label="Full screen card"
         tools:layout="@layout/fullscreen_card">
         <argument
             android:name="card"
