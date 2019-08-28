@@ -12,6 +12,8 @@ class CardModel() : Parcelable {
     var title: String? = null
     var type: String? = null
 
+    var pack: String = ""
+
     @SerializedName("type_code")
     var typeCode: String? = null
 
