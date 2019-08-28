@@ -2,8 +2,8 @@ package net.marksheehan.doomtowndeckbuilder.internetdatabase
 
 import android.content.Context
 import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Types
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import net.marksheehan.doomtowndeckbuilder.datamodel.MoshiCardModel
 

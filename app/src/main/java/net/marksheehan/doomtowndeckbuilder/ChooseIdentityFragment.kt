@@ -1,28 +1,22 @@
 package net.marksheehan.doomtowndeckbuilder
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.choose_identity.*
-import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import kotlinx.android.synthetic.main.choose_identity.*
 import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
-class ChooseIdentityFragment : Fragment()
+class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 {
     lateinit var snapHelper : LinearSnapHelper
     lateinit var outfitCardList : List<CardModel>
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.choose_identity, container, false);
-    }
 
     fun SnapHelper.getSnapPosition(recyclerView: RecyclerView): Int {
         val layoutManager = recyclerView.layoutManager ?: return RecyclerView.NO_POSITION
@@ -41,6 +35,7 @@ class ChooseIdentityFragment : Fragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val cards= ViewModelProviders.of(activity!!,
                 DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cards
 

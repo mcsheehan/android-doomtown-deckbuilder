@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseCards"
-        android:name="net.marksheehan.doomtowndeckbuilder.ChooseCardsFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.BuildDeckFragment"
         tools:layout="@layout/choose_cards">
     </fragment>
 
