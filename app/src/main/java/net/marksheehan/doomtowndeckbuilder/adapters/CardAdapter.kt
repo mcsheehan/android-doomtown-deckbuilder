@@ -1,14 +1,13 @@
 package net.marksheehan.doomtowndeckbuilder.adapters
 
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.Navigation
-
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel

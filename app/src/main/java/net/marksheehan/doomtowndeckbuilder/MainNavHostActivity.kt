@@ -1,12 +1,9 @@
 package net.marksheehan.doomtowndeckbuilder
 
-import androidx.navigation.Navigation.findNavController
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -15,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import kotlinx.android.synthetic.main.activity_layout.*
 import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
-class MainNavHostActivity : AppCompatActivity() {
+class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
     lateinit var cardViewModel : DoomtownCardsViewModel
     private lateinit var navController: NavController
@@ -23,8 +20,6 @@ class MainNavHostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_layout)
 
         navController = findNavController(R.id.nav_host_fragment)
 
