@@ -42,7 +42,7 @@ class CardModel() : Parcelable {
     var imagesrc: String? = null
 
     fun getImagePath() : String{
-        return getDownloadUrl()
+        return getFilePath()
     }
 
     private fun getDownloadUrl() : String{
