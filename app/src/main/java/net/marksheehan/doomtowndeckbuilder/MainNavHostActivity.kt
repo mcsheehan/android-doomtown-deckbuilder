@@ -1,6 +1,9 @@
 package net.marksheehan.doomtowndeckbuilder
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 
@@ -30,9 +33,25 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setSupportActionBar(toolbar)
-
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.settings, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId ){
+            R.id.choose_packs -> {
+                navController.navigate(NavigationGraphDirections.actionGlobalChoosePacks())
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

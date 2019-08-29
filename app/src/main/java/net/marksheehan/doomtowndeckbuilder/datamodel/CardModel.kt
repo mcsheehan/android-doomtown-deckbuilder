@@ -12,6 +12,8 @@ class CardModel() : Parcelable {
     var title: String? = null
     var type: String? = null
 
+    var pack: String = ""
+
     @SerializedName("type_code")
     var typeCode: String? = null
 
@@ -38,6 +40,21 @@ class CardModel() : Parcelable {
 
     var url: String? = null
     var imagesrc: String? = null
+
+    fun getImagePath() : String{
+        return getFilePath()
+    }
+
+    private fun getDownloadUrl() : String{
+        val downloadUrl = "https://dtdb.co" + imagesrc!!
+        return downloadUrl
+    }
+
+    private fun getFilePath() : String{
+        val fileName : String = imagesrc!!.substringAfterLast("/")
+        val filePath  ="file:///android_asset/cards/" + fileName
+        return filePath
+    }
 
     constructor(parcel: Parcel) : this() {
         lastModified = parcel.readString()
