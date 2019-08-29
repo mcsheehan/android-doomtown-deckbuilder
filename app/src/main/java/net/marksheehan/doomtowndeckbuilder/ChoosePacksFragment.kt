@@ -5,33 +5,40 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.choose_pack_layout.*
-import net.marksheehan.doomtowndeckbuilder.adapters.NameAndChecked
+import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
+import net.marksheehan.doomtowndeckbuilder.adapters.TextAndBoolean
 import net.marksheehan.doomtowndeckbuilder.adapters.PackListAdapter
 import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
 
-class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout){
+class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
-    val onItemClickListener = AdapterView.OnItemClickListener {
-        parent, view, position, id ->
-        val item = parent.getItemAtPosition(position)
-        println(item)
+    lateinit var doomtownCardsViewModel : DoomtownCardsViewModel
+
+    val checkedTextViewOnClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        val item: TextAndBoolean = parent.getItemAtPosition(position) as TextAndBoolean
+        item.checked = !item.checked
+        view.checkedTextView.isChecked = item.checked
+
+        this.doomtownCardsViewModel.selectedCardPacks.value!![item.name] = item.checked
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val allPacks= ViewModelProviders.of(activity!!,
-                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cardPacks
+        doomtownCardsViewModel = ViewModelProviders.of(activity!!,
+                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java]
 
-        val cardPacks : List<String> = allPacks.toList()
+        doomtownCardsViewModel.selectedCardPacks.observe(this, Observer { item ->  })
 
-        val fullListOfCardPacks : MutableList<NameAndChecked> = mutableListOf<NameAndChecked>()
-        cardPacks.forEach { fullListOfCardPacks.add(NameAndChecked(it, true))}
+        val mutableMap = doomtownCardsViewModel.selectedCardPacks.value!!
+
+        val fullListOfCardPacks: MutableList<TextAndBoolean> = mutableListOf()
+        mutableMap.forEach { (key, value) -> fullListOfCardPacks.add(TextAndBoolean(key, value)) }
 
         val packListAdapter = PackListAdapter(context!!, fullListOfCardPacks)
-//        val simplePackListAdapter = ArrayAdapter<String>(context!!, android.R.layout.simple_list_item_multiple_choice, cardPacks)
 
         pack_list.adapter = packListAdapter
-        pack_list.onItemClickListener = onItemClickListener
+        pack_list.onItemClickListener = checkedTextViewOnClickListener
     }
 }

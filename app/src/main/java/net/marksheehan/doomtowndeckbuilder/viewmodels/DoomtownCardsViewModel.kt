@@ -1,6 +1,7 @@
 package net.marksheehan.doomtowndeckbuilder.viewmodels
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
@@ -16,6 +17,7 @@ class DoomtownCardsViewModel(context : Context) : ViewModel(){
 
     val cards : List<CardModel> = loadInitialCardList(context)
     val cardPacks : Set<String> = createCardPackList()
+    val selectedCardPacks : MutableLiveData<MutableMap<String, Boolean>> = loadInitialSelectedCardPacks()
 
     private fun loadInitialCardList(context : Context)  : List<CardModel> {
         val cardModel = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context,"card_list.json")
@@ -27,5 +29,15 @@ class DoomtownCardsViewModel(context : Context) : ViewModel(){
         cards.forEach { card: CardModel ->  allPacksSet.add(card.pack) }
 
         return allPacksSet
+    }
+
+    private fun loadInitialSelectedCardPacks() : MutableLiveData<MutableMap<String, Boolean>> {
+        val cardPacksChecked =  MutableLiveData<MutableMap<String, Boolean>>()
+        val cardPacksSelected : MutableMap<String, Boolean> = mutableMapOf()
+
+        cardPacks.forEach { cardPacksSelected.set(it, true)}
+
+        cardPacksChecked.value = cardPacksSelected
+        return cardPacksChecked
     }
 }
