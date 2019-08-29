@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/chooseDecks">
+    app:startDestination="@id/cardViewerFragment">
 
     <fragment
         android:id="@+id/cardViewerFragment"
@@ -28,15 +28,10 @@
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
     </fragment>
     <fragment
-        android:id="@+id/chooseDecks"
-        android:name="net.marksheehan.doomtowndeckbuilder.ChoosePacksFragment">
-        <action
-            android:id="@+id/action_chooseDecks_to_cardViewerFragment"
-            app:destination="@id/cardViewerFragment" />
-        <action
-            android:id="@+id/action_chooseDecks_to_chooseIdentity"
-            app:destination="@id/chooseIdentity" />
-    </fragment>
+        android:id="@+id/choosePacks"
+        android:name="net.marksheehan.doomtowndeckbuilder.ChoosePacksFragment"
+        android:label="Choose Packs"
+        tools:layout="@layout/choose_packs" />
     <fragment
         android:id="@+id/chooseIdentity"
         android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment"
@@ -52,4 +47,5 @@
     </fragment>
 
     <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
+    <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />
 </navigation>
