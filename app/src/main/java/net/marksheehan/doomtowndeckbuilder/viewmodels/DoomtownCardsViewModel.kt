@@ -40,4 +40,8 @@ class DoomtownCardsViewModel(context : Context) : ViewModel(){
         cardPacksChecked.value = cardPacksSelected
         return cardPacksChecked
     }
+
+    fun filterCardsBySelectedPacks(): List<CardModel> {
+        return cards.filter { selectedCardPacks.value!![it.pack]!! }
+    }
 }

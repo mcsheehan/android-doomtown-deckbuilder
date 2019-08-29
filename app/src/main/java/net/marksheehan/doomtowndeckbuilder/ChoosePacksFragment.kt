@@ -31,13 +31,12 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
         doomtownCardsViewModel.selectedCardPacks.observe(this, Observer { item ->  })
 
-        val mutableMap = doomtownCardsViewModel.selectedCardPacks.value!!
+        val mutableMap = doomtownCardsViewModel.selectedCardPacks.value
 
         val fullListOfCardPacks: MutableList<TextAndBoolean> = mutableListOf()
-        mutableMap.forEach { (key, value) -> fullListOfCardPacks.add(TextAndBoolean(key, value)) }
+        mutableMap?.forEach { (key, value) -> fullListOfCardPacks.add(TextAndBoolean(key, value)) }
 
         val packListAdapter = PackListAdapter(context!!, fullListOfCardPacks)
-
         pack_list.adapter = packListAdapter
         pack_list.onItemClickListener = checkedTextViewOnClickListener
     }
