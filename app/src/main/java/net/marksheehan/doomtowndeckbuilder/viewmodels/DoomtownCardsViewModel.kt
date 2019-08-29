@@ -15,9 +15,17 @@ class DoomtownCardsViewModel(context : Context) : ViewModel(){
     }
 
     val cards : List<CardModel> = loadInitialCardList(context)
+    val cardPacks : Set<String> = createCardPackList()
 
     private fun loadInitialCardList(context : Context)  : List<CardModel> {
         val cardModel = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context,"card_list.json")
         return cardModel
+    }
+
+    private fun createCardPackList() : Set<String> {
+        val allPacksSet : MutableSet<String> = mutableSetOf()
+        cards.forEach { card: CardModel ->  allPacksSet.add(card.pack) }
+
+        return allPacksSet
     }
 }
