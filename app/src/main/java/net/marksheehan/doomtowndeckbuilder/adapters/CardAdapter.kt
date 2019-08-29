@@ -44,15 +44,13 @@ class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_small_view, parent, false)
         return CardViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val currentCard = mItemList[position]
-
-        val fullImagePath = "https://dtdb.co" + currentCard.imagesrc!!
-        Picasso.get().load(fullImagePath).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(holder.cardImage)
+        Picasso.get().load(currentCard.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(holder.cardImage)
     }
 
     override fun getItemCount(): Int {

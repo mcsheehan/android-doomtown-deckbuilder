@@ -18,6 +18,6 @@
         android:paddingTop="30px"
         app:layoutManager="GridLayoutManager"
         app:spanCount="3"
-        tools:listitem="@layout/card" />
+        tools:listitem="@layout/card_small_view" />
 
 </LinearLayout>

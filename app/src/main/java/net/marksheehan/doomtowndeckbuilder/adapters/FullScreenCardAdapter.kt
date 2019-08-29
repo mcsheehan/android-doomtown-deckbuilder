@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fullscreen_card.view.*
+import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
@@ -29,7 +29,7 @@ class FullScreenCardAdapter(private val mItemList: List<CardModel>) : RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FullScreenardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fullscreen_card, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_fullscreen_view, parent, false)
         return FullScreenardViewHolder(itemView)
     }
 

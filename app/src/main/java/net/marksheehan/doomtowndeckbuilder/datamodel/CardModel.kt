@@ -41,6 +41,21 @@ class CardModel() : Parcelable {
     var url: String? = null
     var imagesrc: String? = null
 
+    fun getImagePath() : String{
+        return getDownloadUrl()
+    }
+
+    private fun getDownloadUrl() : String{
+        val downloadUrl = "https://dtdb.co" + imagesrc!!
+        return downloadUrl
+    }
+
+    private fun getFilePath() : String{
+        val fileName : String = imagesrc!!.substringAfterLast("/")
+        val filePath  ="file:///android_asset/cards/" + fileName
+        return filePath
+    }
+
     constructor(parcel: Parcel) : this() {
         lastModified = parcel.readString()
         code = parcel.readString()

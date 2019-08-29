@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fullscreen_card.view.*
+import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 

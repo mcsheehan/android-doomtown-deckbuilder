@@ -9,7 +9,7 @@
         android:id="@+id/cardViewerFragment"
         android:name="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
         android:label="Card Viewer"
-        tools:layout="@layout/card_list">
+        tools:layout="@layout/card_grid_view">
         <action
             android:id="@+id/action_cardViewerFragment_to_individualCardViewer"
             app:destination="@id/individualCardView"
@@ -21,8 +21,8 @@
     <fragment
         android:id="@+id/individualCardView"
         android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
-        android:label="Large card"
-        tools:layout="@layout/fullscreen_card">
+        android:label="Large Card Viewer"
+        tools:layout="@layout/card_fullscreen_view">
         <argument
             android:name="card"
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
