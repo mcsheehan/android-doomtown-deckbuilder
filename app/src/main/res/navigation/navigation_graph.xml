@@ -31,10 +31,11 @@
         android:id="@+id/choosePacks"
         android:name="net.marksheehan.doomtowndeckbuilder.ChoosePacksFragment"
         android:label="Choose Packs"
-        tools:layout="@layout/choose_packs" />
+        tools:layout="@layout/choose_pack_layout" />
     <fragment
         android:id="@+id/chooseIdentity"
         android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment"
+        android:label="Choose your identity"
         tools:layout="@layout/choose_identity">
         <action
             android:id="@+id/action_chooseIdentity_to_chooseCards"
@@ -43,8 +44,8 @@
     <fragment
         android:id="@+id/chooseCards"
         android:name="net.marksheehan.doomtowndeckbuilder.BuildDeckFragment"
-        tools:layout="@layout/choose_cards">
-    </fragment>
+        android:label="Build your deck"
+        tools:layout="@layout/choose_cards"></fragment>
 
     <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
     <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />

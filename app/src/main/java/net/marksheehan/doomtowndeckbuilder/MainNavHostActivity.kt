@@ -44,7 +44,7 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId ){
-            R.id.choose_decks -> {
+            R.id.choose_packs -> {
                 navController.navigate(R.id.action_global_choosePacks)
                 true
             }
