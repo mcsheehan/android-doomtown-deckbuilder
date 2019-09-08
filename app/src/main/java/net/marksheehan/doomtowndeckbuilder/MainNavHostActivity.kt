@@ -13,11 +13,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import kotlinx.android.synthetic.main.activity_layout.*
-import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
+import kotlinx.coroutines.GlobalScope
+import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
+import net.marksheehan.doomtowndeckbuilder.database.PopulateDatabase
 
 class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
-    lateinit var cardViewModel : DoomtownCardsViewModel
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -26,14 +27,16 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
         navController = findNavController(R.id.nav_host_fragment)
 
-        cardViewModel = ViewModelProviders.of(this,
-                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(applicationContext))[DoomtownCardsViewModel::class.java]
+//        cardViewModel = ViewModelProviders.of(this,
+//                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(applicationContext))[DoomtownCardsViewModel::class.java]
 
         //TODO Add drawer layout to the app bar configuration
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        var database  = MainDatabase.getInstance(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

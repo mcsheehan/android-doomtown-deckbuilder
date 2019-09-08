@@ -89,4 +89,9 @@ dependencies {
 
     testImplementation 'org.robolectric:robolectric:4.3'
     testImplementation 'junit:junit:4.12'
+
+    implementation 'androidx.room:room-runtime:2.1.0'
+    annotationProcessor 'androidx.room:room-compiler:2.1.0'
+
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 }

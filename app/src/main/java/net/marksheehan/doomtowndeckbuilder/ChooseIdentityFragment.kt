@@ -3,6 +3,7 @@ package net.marksheehan.doomtowndeckbuilder
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -11,10 +12,15 @@ import androidx.recyclerview.widget.SnapHelper
 import kotlinx.android.synthetic.main.choose_identity.*
 import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
-import net.marksheehan.doomtowndeckbuilder.viewmodels.DoomtownCardsViewModel
+import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtils
+import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModel
 
 class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 {
+    private val viewModel: CardViewerViewModel by viewModels {
+        InjectorUtils.providePackRepository(requireContext())
+    }
+
     lateinit var snapHelper : LinearSnapHelper
     lateinit var outfitCardList : List<CardModel>
 
@@ -36,10 +42,11 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val cards= ViewModelProviders.of(activity!!,
-                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cards
+//        val cards= ViewModelProviders.of(activity!!,
+//                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java].cards
+        outfitCardList  = viewModel.allCards.value!!.filter {  it.type == "Outfit" }.sortedByDescending { it.gang }
 
-        outfitCardList = cards.filter { it.type == "Outfit" }.sortedByDescending { it.gang }
+//        outfitCardList = cards.filter { it.type == "Outfit" }.sortedByDescending { it.gang }
 
         identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
 

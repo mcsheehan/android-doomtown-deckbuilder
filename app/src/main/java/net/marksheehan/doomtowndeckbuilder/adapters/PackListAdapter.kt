@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
 import net.marksheehan.doomtowndeckbuilder.R
+import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 
 class TextAndBoolean(var name: String, var checked: Boolean) {
 }
 
-class PackListAdapter(context : Context, data : List<TextAndBoolean>) : ArrayAdapter<TextAndBoolean>(context, R.layout.text_and_checkbox_item, data){
+class PackListAdapter(context : Context, data : List<PackEntity>) : ArrayAdapter<PackEntity>(context, R.layout.text_and_checkbox_item, data){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -29,8 +30,8 @@ class PackListAdapter(context : Context, data : List<TextAndBoolean>) : ArrayAda
 
         val checkedTextView = returnView.checkedTextView
 
-        checkedTextView.text = item.name
-        checkedTextView.isChecked = item.checked
+        checkedTextView.text = item.packname
+        checkedTextView.isChecked = item.isSelected
 
         return returnView
     }
