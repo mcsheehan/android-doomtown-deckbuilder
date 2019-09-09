@@ -21,7 +21,7 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
     val checkedTextViewOnClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
 
-        var item: PackEntity = parent.getItemAtPosition(position) as PackEntity
+        val item: PackEntity = parent.getItemAtPosition(position) as PackEntity
         item.isSelected = !item.isSelected
 
         viewModel.updateDeck(item)
@@ -30,14 +30,12 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val emptyPackList : List<PackEntity> = emptyList()
-        val packListAdapter = PackListAdapter(context!!, emptyPackList)
-        viewModel.selectedPacks.observe(this, Observer { it ->
-            //            val packListAdapter = PackListAdapter(context!!, it)
+        val packListAdapter = PackListAdapter()
+        pack_list.adapter = packListAdapter
 
-            packListAdapter.notifyDataSetChanged()
-            pack_list.adapter = packListAdapter
-            pack_list.onItemClickListener = checkedTextViewOnClickListener
+        viewModel.selectedPacks.observe(this, Observer<List<PackEntity>> { it ->
+            packListAdapter.submitList(it)
+//            pack_list.onItemClickListener = checkedTextViewOnClickListener
         })
 
 

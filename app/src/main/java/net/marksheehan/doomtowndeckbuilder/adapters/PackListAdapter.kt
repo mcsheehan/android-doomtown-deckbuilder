@@ -1,38 +1,51 @@
 package net.marksheehan.doomtowndeckbuilder.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.CheckedTextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 
-class TextAndBoolean(var name: String, var checked: Boolean) {
-}
+class PackListAdapter : ListAdapter<PackEntity, PackListAdapter.ViewHolder>(PackListAdapter.PackEntityDiff()) {
 
-class PackListAdapter(context : Context, data : List<PackEntity>) : ArrayAdapter<PackEntity>(context, R.layout.text_and_checkbox_item, data){
+    class PackEntityDiff : DiffUtil.ItemCallback<PackEntity>() {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
-        val item = getItem(position)!!
-        val returnView : View
-
-        if (convertView == null) {
-            val inflater: LayoutInflater = LayoutInflater.from(context)
-            returnView = inflater.inflate(R.layout.text_and_checkbox_item, parent, false)
-        }
-        else
-        {
-            returnView = convertView
+        override fun areItemsTheSame(oldItem: PackEntity, newItem: PackEntity): Boolean {
+            return oldItem.packname == newItem.packname
         }
 
-        val checkedTextView = returnView.checkedTextView
+        override fun areContentsTheSame(oldItem: PackEntity, newItem: PackEntity): Boolean {
+            return oldItem.isSelected == oldItem.isSelected
+        }
+    }
 
-        checkedTextView.text = item.packname
-        checkedTextView.isChecked = item.isSelected
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+//        val context = parent.context
+//        val inflater = LayoutInflater.from(context)
 
-        return returnView
+        // Inflate the custom layout
+//        val contactView = inflater.inflate(R.layout.text_and_checkbox_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.text_and_checkbox_item, parent, false)
+        return ViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: PackListAdapter.ViewHolder, position: Int) {
+        //Can add click listener as second argument
+        holder.bind(getItem(position));
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(packEntity : PackEntity){
+            itemView.checkedTextView.setText(packEntity.packname)
+            itemView.checkedTextView.isChecked = packEntity.isSelected
+//            checkedTextView.setText(packEntity.packname)
+//            checkedTextView.isChecked = packEntity.isSelected
+        }
     }
 }
