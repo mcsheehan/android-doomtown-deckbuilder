@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/pack_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pack_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@android:layout/simple_list_item_checked"
-        />
+        tools:listitem="@layout/text_and_checkbox_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

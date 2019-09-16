@@ -2,13 +2,27 @@ package net.marksheehan.doomtowndeckbuilder.datamodel
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 
+@Entity(tableName="CardModel",
+        foreignKeys = arrayOf(ForeignKey(entity = PackEntity::class,
+                parentColumns = arrayOf("packname"),
+                childColumns = arrayOf("pack"),
+                onDelete = ForeignKey.SET_DEFAULT)))
 class CardModel() : Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
+    var cardId : Long = 0
+
     @SerializedName("last-modified")
     var lastModified: String? = null
 
     var code: String? = null
+
     var title: String? = null
     var type: String? = null
 
