@@ -21,7 +21,7 @@ interface RetrievePackDao{
     @Query("SELECT * FROM CardModel INNER JOIN PackEntity ON CardModel.pack == PackEntity.packname WHERE PackEntity.isSelected IS 1")
     fun getAllCardsFromSelectedDecks()  : LiveData<List<CardModel>>
 
-    @Update()
+    @Update
     fun updatePack(pack: PackEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

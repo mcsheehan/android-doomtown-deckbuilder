@@ -14,7 +14,7 @@ class CardViewerViewModel internal constructor(private val cardRepository: Retri
     val allCards : LiveData<List<CardModel>> = cardRepository.getAllSelectedDeckCards()
     val selectedPacks : LiveData<List<PackEntity>> = cardRepository.getAllPacks()
 
-    fun updateDeck(pack : PackEntity) {
+    fun updatePack(pack : PackEntity) {
         viewModelScope.launch {
             cardRepository.updatePack(pack)
         }
