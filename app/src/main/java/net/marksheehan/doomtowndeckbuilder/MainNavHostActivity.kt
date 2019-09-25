@@ -27,9 +27,6 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
         navController = findNavController(R.id.nav_host_fragment)
 
-//        cardViewModel = ViewModelProviders.of(this,
-//                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(applicationContext))[DoomtownCardsViewModel::class.java]
-
         //TODO Add drawer layout to the app bar configuration
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
