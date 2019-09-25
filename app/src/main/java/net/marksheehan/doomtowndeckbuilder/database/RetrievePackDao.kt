@@ -15,11 +15,15 @@ interface RetrievePackDao{
     @Query("SELECT * FROM CardModel")
     fun getAllCardsNotLive() : List<CardModel>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addCardsToDataBase(cards : List<CardModel>)
+
+
+    @Query("SELECT * FROM PackEntity")
+    fun getAllPacksNotLive() : List<PackEntity>
+
     @Query("SELECT * FROM PackEntity")
     fun getAllSelectedPacks() : LiveData<List<PackEntity>>
-
-    @Query("SELECT * FROM CardModel INNER JOIN PackEntity ON CardModel.pack == PackEntity.packname WHERE PackEntity.isSelected IS 1")
-    fun getAllCardsFromSelectedDecks()  : LiveData<List<CardModel>>
 
     @Update
     fun updatePack(pack: PackEntity)
@@ -30,19 +34,7 @@ interface RetrievePackDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun updateSelectedPack(packs : List<PackEntity>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addCardsToDataBase(cards : List<CardModel>)
 
-//    @Query("SELECT * FROM CardEntity")
-//    fun getUserById(userid: String): List<CardEntity>
-//
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    fun insertUser(user: CardEntity)
-//
-//    @Update
-//    fun update(card : CardEntity)
-//
-////    @Query("DELETE FROM CardEntity")
-//    @Delete
-//    fun deleteAllUsers(cardEntity: CardEntity)
+    @Query("SELECT * FROM CardModel INNER JOIN PackEntity ON CardModel.pack == PackEntity.packname WHERE PackEntity.isSelected IS 1")
+    fun getAllCardsFromSelectedPacks()  : LiveData<List<CardModel>>
 }

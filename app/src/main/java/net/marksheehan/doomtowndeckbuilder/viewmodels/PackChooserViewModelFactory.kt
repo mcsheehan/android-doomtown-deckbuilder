@@ -3,16 +3,12 @@ package net.marksheehan.doomtowndeckbuilder.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-/**
- * Factory for creating a [CardViewerViewModel] with a constructor that takes a
- * [RetrievePackDataRepository].
- */
-class CardViewerViewModelFactory(
+class PackChooserViewModelFactory(
         private val repository: RetrievePackDataRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CardViewerViewModel(repository) as T
+        return PackChooserViewModel(repository) as T
     }
 }

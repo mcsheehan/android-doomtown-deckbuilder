@@ -10,13 +10,10 @@ import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModel
 class BuildDeckFragment : Fragment(R.layout.choose_cards) {
 
     private val viewModel: CardViewerViewModel by viewModels {
-        InjectorUtils.providePackRepository(requireContext())
+        InjectorUtils.provideCardViewerViewModel(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val cards= ViewModelProviders.of(activity!!,
-//                DoomtownCardsViewModel.DoomtownCardsViewModelFactory(activity!!))[DoomtownCardsViewModel::class.java]
-
     }
 
 }
