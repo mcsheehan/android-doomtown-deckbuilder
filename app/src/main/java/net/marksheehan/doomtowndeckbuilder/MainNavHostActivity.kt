@@ -45,6 +45,11 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
                 navController.navigate(NavigationGraphDirections.actionGlobalChoosePacks())
                 true
             }
+            R.id.choose_card_viewer -> {
+                navController.navigate(NavigationGraphDirections.actionGlobalCardViewerFragment())
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

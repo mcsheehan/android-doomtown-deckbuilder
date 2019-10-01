@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/cardViewerFragment">
+    app:startDestination="@id/chooseIdentity">
 
     <fragment
         android:id="@+id/cardViewerFragment"
@@ -39,10 +39,10 @@
         tools:layout="@layout/choose_identity">
         <action
             android:id="@+id/action_chooseIdentity_to_chooseCards"
-            app:destination="@id/chooseCards" />
+            app:destination="@id/buildDeck" />
     </fragment>
     <fragment
-        android:id="@+id/chooseCards"
+        android:id="@+id/buildDeck"
         android:name="net.marksheehan.doomtowndeckbuilder.BuildDeckFragment"
         android:label="Build your deck"
         tools:layout="@layout/choose_cards"></fragment>

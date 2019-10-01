@@ -5,4 +5,8 @@
         android:id="@+id/choose_packs"
         android:title="Choose packs" />
 
+    <item
+        android:id="@+id/choose_card_viewer"
+        android:title="View cards" />
+
 </menu>

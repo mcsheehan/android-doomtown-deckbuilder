@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import kotlinx.android.synthetic.main.choose_identity.*
 import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
+import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtils
 import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModel
@@ -41,14 +43,12 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        outfitCardList  = viewModel.allCardsFromSelectedPacks.value!!.filter {  it.type == "Outfit" }.sortedByDescending { it.gang }
-
-        identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
-
-        snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(identityChooser)
-
-        selectButton.setOnClickListener(onSelectButtonPressed)
+        viewModel.allCardsFromSelectedPacks.observe(this, Observer<List<CardModel>> { cardList->
+            outfitCardList = cardList.filter { it.type == "Outfit"}.sortedByDescending { it.gang }
+            identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
+            snapHelper = LinearSnapHelper()
+            snapHelper.attachToRecyclerView(identityChooser)
+            selectButton.setOnClickListener(onSelectButtonPressed)
+        })
     }
-
 }
