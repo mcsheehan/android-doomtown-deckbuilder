@@ -27,7 +27,8 @@ abstract class MainDatabase : RoomDatabase() {
         fun getInstance(context: Context): MainDatabase =
                 INSTANCE ?: synchronized(this) {
                     INSTANCE ?: buildDatabase(context).also {
-                        INSTANCE = it }
+                        INSTANCE = it
+                    }
                 }
 
         private fun buildDatabase(context: Context): MainDatabase {

@@ -13,7 +13,7 @@ class PackChooserViewModel internal constructor(private val cardRepository: Retr
 
     init {
         viewModelScope.launch {
-            val allPacks = cardRepository.getAllPacksNotLive()
+            val allPacks = cardRepository.getAllPacksList()
             livePacks.value = allPacks
         }
     }

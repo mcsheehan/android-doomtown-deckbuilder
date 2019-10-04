@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.choose_pack_layout.view.*
 import net.marksheehan.doomtowndeckbuilder.adapters.PackListAdapter
 import net.marksheehan.doomtowndeckbuilder.database.PackEntity
-import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtils
+import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.adapters.PackEntityClicked
 import net.marksheehan.doomtowndeckbuilder.viewmodels.PackChooserViewModel
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
     private val viewModel: PackChooserViewModel by viewModels {
-        InjectorUtils.providePackChooserViewModel(requireContext())
+        InjectorUtilities.providePackChooserViewModel(requireContext())
     }
 
     private lateinit var packListAdapter : PackListAdapter

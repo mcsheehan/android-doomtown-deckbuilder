@@ -8,13 +8,13 @@ import androidx.lifecycle.Observer
 
 import kotlinx.android.synthetic.main.card_grid_view.*
 import net.marksheehan.doomtowndeckbuilder.adapters.CardAdapter
-import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtils
+import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModel
 
 class CardViewerFragment : Fragment(R.layout.card_grid_view) {
 
     private val viewModel: CardViewerViewModel by viewModels {
-        InjectorUtils.provideCardViewerViewModel(requireContext())
+        InjectorUtilities.provideCardViewerViewModel(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

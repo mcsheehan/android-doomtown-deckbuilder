@@ -1,12 +1,8 @@
 package net.marksheehan.doomtowndeckbuilder.database
 
 import android.content.Context
-import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.coroutineScope
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 import net.marksheehan.doomtowndeckbuilder.viewmodels.DoThingsToCardLists
@@ -27,8 +23,8 @@ class PopulateDatabase(context : Context, workerParams : WorkerParameters) : Cor
                 packEntityList.add(PackEntity(pack, true))
             }
 
-            MainDatabase.getInstance(context).cardEntityDao().updateSelectedPack(packEntityList)
-            MainDatabase.getInstance(context).cardEntityDao().addCardsToDataBase(cardModel)
+            MainDatabase.getInstance(context).cardEntityDao().insertPackList(packEntityList)
+            MainDatabase.getInstance(context).cardEntityDao().insertCardList(cardModel)
         }
     }
 
@@ -43,8 +39,8 @@ class PopulateDatabase(context : Context, workerParams : WorkerParameters) : Cor
                 packEntityList.add(PackEntity(pack, true))
             }
 
-            MainDatabase.getInstance(applicationContext).cardEntityDao().updateSelectedPack(packEntityList)
-            MainDatabase.getInstance(applicationContext).cardEntityDao().addCardsToDataBase(cardModel)
+            MainDatabase.getInstance(applicationContext).cardEntityDao().insertPackList(packEntityList)
+            MainDatabase.getInstance(applicationContext).cardEntityDao().insertCardList(cardModel)
             Result.success()
     }
 

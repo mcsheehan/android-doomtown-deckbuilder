@@ -9,7 +9,7 @@ import net.marksheehan.doomtowndeckbuilder.viewmodels.RetrievePackDataRepository
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
  */
-object InjectorUtils {
+object InjectorUtilities {
 
     private fun getPackDataRepository(context: Context): RetrievePackDataRepository {
         return RetrievePackDataRepository.getInstance(
