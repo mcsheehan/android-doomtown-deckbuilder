@@ -45,7 +45,7 @@
         android:id="@+id/buildDeck"
         android:name="net.marksheehan.doomtowndeckbuilder.BuildDeckFragment"
         android:label="Build your deck"
-        tools:layout="@layout/choose_cards"></fragment>
+        tools:layout="@layout/build_deck"></fragment>
 
     <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
     <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />

@@ -2,9 +2,7 @@ package net.marksheehan.doomtowndeckbuilder.utilities
 
 import android.content.Context
 import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
-import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModelFactory
-import net.marksheehan.doomtowndeckbuilder.viewmodels.PackChooserViewModelFactory
-import net.marksheehan.doomtowndeckbuilder.viewmodels.RetrievePackDataRepository
+import net.marksheehan.doomtowndeckbuilder.viewmodels.*
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
@@ -15,6 +13,12 @@ object InjectorUtilities {
         return RetrievePackDataRepository.getInstance(
                 MainDatabase.getInstance(context.applicationContext).cardEntityDao())
     }
+
+    fun provideDeckViewerViewModel(context: Context ): BuildDeckViewModelFactory {
+        val repository = getPackDataRepository(context)
+        return BuildDeckViewModelFactory(repository)
+    }
+
 
     fun provideCardViewerViewModel(context: Context ): CardViewerViewModelFactory {
         val repository = getPackDataRepository(context)
