@@ -22,10 +22,10 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
 
         build_deck_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
-        viewModel.allCardsFromSelectedPacks.observe(this, Observer { it ->
-            val cardAdapter : CardAdapter = CardAdapter(it)
-            build_deck_recycler.adapter = cardAdapter
-         })
+//        viewModel.allCardsFromSelectedPacks.observe(this, Observer { it ->
+//            val cardAdapter : CardAdapter = CardAdapter(it)
+////            build_deck_recycler.adapter = cardAdapter
+//         })
     }
 
 }
