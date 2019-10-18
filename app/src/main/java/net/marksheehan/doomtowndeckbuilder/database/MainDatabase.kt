@@ -12,7 +12,7 @@ import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 /**
  * The Room database that contains the Users table
  */
-@Database(entities = arrayOf(CardModel::class, DeckEntity::class, PackEntity::class), version = 1)
+@Database(entities = arrayOf(CardModel::class, DeckEntity::class, PackEntity::class), version = 2)
 
 abstract class MainDatabase : RoomDatabase() {
 
