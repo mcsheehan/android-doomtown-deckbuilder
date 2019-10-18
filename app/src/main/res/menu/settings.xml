@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/choose_packs"
-        android:title="Choose packs" />
+        android:title="@string/choose_packs" />
 
     <item
         android:id="@+id/choose_card_viewer"
-        android:title="View cards" />
+        android:title="@string/view_cards" />
 
 </menu>

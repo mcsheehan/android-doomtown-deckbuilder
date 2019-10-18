@@ -1,0 +1,2 @@
+json_key_file("/home/msheehan/Credentials/api-7443548550359357421-823292-1db848044881.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("net.marksheehan.doomtowndeckbuilder") # e.g. com.krausefx.app

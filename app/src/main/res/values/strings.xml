@@ -2,4 +2,6 @@
     <string name="app_name">Doomtown deck viewer</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_basic">Doomtown viewer</string>
+    <string name="choose_packs">Choose packs</string>
+    <string name="view_cards">View cards</string>
 </resources>

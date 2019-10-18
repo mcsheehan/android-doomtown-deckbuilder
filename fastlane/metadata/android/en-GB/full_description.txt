@@ -1,0 +1,1 @@
+This application allows you to view all of the cards available in the popular living card game doomtown reloaded. You can scroll through and get a closer look at individual cards from packs that you may be considering getting or for browsing through your collection whilst on the go.

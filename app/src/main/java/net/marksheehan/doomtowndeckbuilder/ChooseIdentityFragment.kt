@@ -28,7 +28,7 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(identityChooser)
-        selectButton.setOnClickListener(onSelectButtonPressed)
+        createDeckButton.setOnClickListener(onSelectButtonPressed)
 
         viewModel.allCardsFromSelectedPacks.observe(this, Observer<List<CardModel>> { cardList->
             outfitCardList = cardList.filter { it.type == "Outfit"}.sortedByDescending { it.gang }
