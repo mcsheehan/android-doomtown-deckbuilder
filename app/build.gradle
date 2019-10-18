@@ -8,10 +8,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "net.marksheehan.doomtowndeckbuilder"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 28
-        versionCode 104
-        versionName "1.04"
+        versionCode 105
+        versionName "1.05"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -65,6 +65,7 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.0.0'
     implementation "androidx.work:work-runtime-ktx:2.2.0"
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
 
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -76,10 +77,14 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
-    implementation 'androidx.room:room-runtime:2.1.0'
-    implementation 'androidx.room:room-ktx:2.1.0'
+    implementation 'androidx.room:room-runtime:2.2.0'
+    implementation 'androidx.room:room-ktx:2.2.0'
+    implementation 'androidx.room:room-runtime:2.2.0'
 
-    kapt 'androidx.room:room-compiler:2.1.0'
+    annotationProcessor 'androidx.room:room-compiler:2.2.0'
+
+    kapt 'androidx.room:room-compiler:2.2.0'
+    kapt "android.arch.persistence.room:compiler:1.1.1"
     kapt "android.arch.persistence.room:compiler:1.1.1"
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -87,12 +92,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'tools.fastlane:screengrab:1.2.0'
 
     testImplementation 'org.robolectric:robolectric:4.3'
     testImplementation 'junit:junit:4.12'
-
-    implementation 'androidx.room:room-runtime:2.1.0'
-    annotationProcessor 'androidx.room:room-compiler:2.1.0'
-
-    kapt "android.arch.persistence.room:compiler:1.1.1"
 }

@@ -8,5 +8,6 @@ import java.util.*
 @Entity(tableName= "DeckEntity")
 class DeckEntity(
     @PrimaryKey
-    val deckname : String
+    val deckname : String,
+    val description : String
 )

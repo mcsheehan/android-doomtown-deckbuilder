@@ -7,15 +7,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import kotlinx.android.synthetic.main.activity_layout.*
-import kotlinx.coroutines.GlobalScope
 import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
-import net.marksheehan.doomtowndeckbuilder.database.PopulateDatabase
 
 class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
 
@@ -33,21 +30,26 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
         setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        var database  = MainDatabase.getInstance(this)
+        var database = MainDatabase.getInstance(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater : MenuInflater = menuInflater
+        val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.settings, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId ){
+        return when (item.itemId) {
             R.id.choose_packs -> {
                 navController.navigate(NavigationGraphDirections.actionGlobalChoosePacks())
                 true
             }
+            R.id.choose_card_viewer -> {
+                navController.navigate(NavigationGraphDirections.actionGlobalCardViewerFragment())
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

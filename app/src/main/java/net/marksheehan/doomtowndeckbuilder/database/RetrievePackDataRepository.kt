@@ -13,20 +13,15 @@ class RetrievePackDataRepository private constructor(
 {
     suspend fun createCards(card : List<CardModel>) {
         withContext(IO) {
-            cardPackDao.addCardsToDataBase(card)
+            cardPackDao.insertCardList(card)
         }
     }
 
     fun getAllCardsFromSelectedPacks() = cardPackDao.getAllCardsFromSelectedPacks()
-    fun getAllCards() = cardPackDao.getAllCards()
-    fun getAllCardsNotLive() = cardPackDao.getAllCardsNotLive()
 
-
-    fun getAllPacks() = cardPackDao.getAllSelectedPacks()
-
-    suspend fun getAllPacksNotLive() : List<PackEntity>{
+    suspend fun getAllPacksList() : List<PackEntity>{
         return withContext(IO) {
-            cardPackDao.getAllPacksNotLive()
+            cardPackDao.getAllPacksList()
         }
     }
 
@@ -35,13 +30,6 @@ class RetrievePackDataRepository private constructor(
             cardPackDao.updatePack(pack)
         }
     }
-
-    suspend fun getPacks(pack : PackEntity) {
-        withContext(IO) {
-            cardPackDao.updatePack(pack)
-        }
-    }
-
 
     companion object {
         // For Singleton instantiation
