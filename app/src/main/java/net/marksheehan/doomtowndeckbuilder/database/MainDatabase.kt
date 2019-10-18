@@ -20,7 +20,7 @@ abstract class MainDatabase : RoomDatabase() {
 
     companion object {
 
-        private const val dbName = "decks.db"
+        private const val dbName = "doomtown.db"
 
         @Volatile private var INSTANCE: MainDatabase? = null
 
@@ -34,7 +34,7 @@ abstract class MainDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context): MainDatabase {
 
             return Room.databaseBuilder(context.applicationContext,
-                    MainDatabase::class.java, dbName).fallbackToDestructiveMigration()
+                    MainDatabase::class.java, dbName)
                     .addCallback(object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
