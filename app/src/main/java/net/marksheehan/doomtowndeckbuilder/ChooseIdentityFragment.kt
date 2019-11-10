@@ -40,13 +40,12 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 
         val position = snapHelper.getSnapPosition(identityChooser)
 
-        if(position != RecyclerView.NO_POSITION){
-            val selectedCard = outfitCardList[position]
-            val cardId = selectedCard.cardId
-            Navigation.findNavController(view).navigate(R.id.action_chooseIdentity_to_chooseCards)
-        }
-        else{
+        if(position == RecyclerView.NO_POSITION){
             Toast.makeText(context,"Select an identity. You may need to choose some packs.",Toast.LENGTH_SHORT).show()
+        }
+        else {
+            val selectedCard = outfitCardList[position]
+            Navigation.findNavController(view).navigate(R.id.action_chooseIdentity_to_chooseCards)
         }
     }
 }

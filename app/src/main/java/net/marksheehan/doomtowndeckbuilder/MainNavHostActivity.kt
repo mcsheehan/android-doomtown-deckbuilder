@@ -30,7 +30,7 @@ class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
         setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        var database = MainDatabase.getInstance(this)
+        MainDatabase.getInstance(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

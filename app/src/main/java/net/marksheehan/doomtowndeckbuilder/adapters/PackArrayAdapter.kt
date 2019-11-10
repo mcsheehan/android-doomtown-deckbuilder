@@ -20,8 +20,7 @@ class PackArrayAdapter(context : Context, data : List<PackEntity>) : ArrayAdapte
             val inflater: LayoutInflater = LayoutInflater.from(context)
             returnView = inflater.inflate(R.layout.text_and_checkbox_item, parent, false)
         }
-        else
-        {
+        else {
             returnView = convertView
         }
 

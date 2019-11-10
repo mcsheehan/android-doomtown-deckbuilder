@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
-class FullScreenCardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<FullScreenCardAdapter.FullScreenardViewHolder>() {
+class FullScreenCardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<FullScreenCardAdapter.FullScreenCardViewHolder>() {
 
-    inner class FullScreenardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class FullScreenCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun getClickListenerForCardPosition(position: Int) : OnClickListener{
 
@@ -28,12 +28,12 @@ class FullScreenCardAdapter(private val mItemList: List<CardModel>) : RecyclerVi
         return clickListener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FullScreenardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FullScreenCardViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_fullscreen_view, parent, false)
-        return FullScreenardViewHolder(itemView)
+        return FullScreenCardViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: FullScreenardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FullScreenCardViewHolder, position: Int) {
         val currentCard = mItemList[position]
         val fullImagePath = "https://dtdb.co" + currentCard.imagesrc!!
 

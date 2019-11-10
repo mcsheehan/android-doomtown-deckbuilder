@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.choose_pack_layout.view.*
 import net.marksheehan.doomtowndeckbuilder.adapters.PackListAdapter
 import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtilities
-import net.marksheehan.doomtowndeckbuilder.adapters.PackEntityClicked
 import net.marksheehan.doomtowndeckbuilder.viewmodels.PackChooserViewModel
 import androidx.recyclerview.widget.DividerItemDecoration
 
@@ -25,13 +24,7 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val packClickedCallback = object : PackEntityClicked {
-            override fun clicked(packEntity: PackEntity) {
-                viewModel.updatePack(packEntity)
-            }
-        }
-
-        packListAdapter = PackListAdapter( packClickedCallback )
+        packListAdapter = PackListAdapter { it -> viewModel.updatePack(it)}
 
         view.pack_list_recycler_view.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         view.pack_list_recycler_view.adapter = packListAdapter

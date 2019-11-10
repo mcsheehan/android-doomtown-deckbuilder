@@ -10,37 +10,19 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import net.marksheehan.doomtowndeckbuilder.R
+import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
-class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(private val mItemList: List<CardModel>, private val onCardModelClicked : (CardModel)-> Unit) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardImage: ImageView
 
-        val onItemClicked = OnClickListener { view: View ->
-            val currentCard = mItemList.get(adapterPosition)
-
-            val bundle = Bundle()
-            bundle.putParcelable(null, currentCard)
-            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)
-        }
 
         init {
             cardImage = itemView.findViewById(R.id.cardImage)
-            itemView.setOnClickListener(onItemClicked)
+            itemView.setOnClickListener{onCardModelClicked}
         }
-    }
-
-    fun getClickListenerForCardPosition(position: Int) : OnClickListener{
-
-        val clickListener = OnClickListener() {view: View  ->
-            val currentCard = mItemList.get(position)
-            val bundle = Bundle()
-            bundle.putParcelable(null, currentCard)
-            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)
-        }
-
-        return clickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {

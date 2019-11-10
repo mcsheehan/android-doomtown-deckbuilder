@@ -10,12 +10,8 @@ import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 
-interface PackEntityClicked {
-    fun clicked(packEntity: PackEntity)
-}
-
-class PackListAdapter(private val packEntityClicked : PackEntityClicked) :
-        ListAdapter<PackEntity, PackListAdapter.ItemViewHolder>(PackListAdapter.PackEntityDiff()) {
+class PackListAdapter(private val onPackEntityClicked : (PackEntity)-> Unit) :
+        ListAdapter<PackEntity, PackListAdapter.ItemViewHolder>(PackEntityDiff()) {
 
     class PackEntityDiff : DiffUtil.ItemCallback<PackEntity>() {
 
@@ -28,23 +24,23 @@ class PackListAdapter(private val packEntityClicked : PackEntityClicked) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // Inflate the custom layout
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.text_and_checkbox_item, parent, false)
-
-        return ItemViewHolder(itemView, packEntityClicked)
-    }
-
-    override fun onBindViewHolder(viewItem: PackListAdapter.ItemViewHolder, position: Int) {
-        viewItem.bind(getItem(position))
-    }
-
-    class ItemViewHolder(itemView: View, private val packEntityClicked : PackEntityClicked) : RecyclerView.ViewHolder(itemView){
+    class ItemViewHolder(itemView: View, private val onPackEntityClicked : (PackEntity)-> Unit) : RecyclerView.ViewHolder(itemView){
 
         fun bind(packEntity : PackEntity) = with(itemView){
             itemView.checkedTextView.text = packEntity.packname
             itemView.checkedTextView.isChecked = packEntity.isSelected
-            itemView.checkedTextView.setOnClickListener {  packEntityClicked.clicked(packEntity)}
+            itemView.checkedTextView.setOnClickListener {  onPackEntityClicked(packEntity)}
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        // Inflate the custom layout
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.text_and_checkbox_item, parent, false)
+
+        return ItemViewHolder(itemView, onPackEntityClicked)
+    }
+
+    override fun onBindViewHolder(viewItem: ItemViewHolder, position: Int) {
+        viewItem.bind(getItem(position))
     }
 }
