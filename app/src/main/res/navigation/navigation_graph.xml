@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cardViewerFragment"
-        android:name="net.marksheehan.doomtowndeckbuilder.CardViewerFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.CardViewerFragment"
         android:label="Card Viewer"
         tools:layout="@layout/card_grid_view">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/individualCardView"
-        android:name="net.marksheehan.doomtowndeckbuilder.FullScreenCardFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.FullScreenCardFragment"
         android:label="Large Card Viewer"
         tools:layout="@layout/card_fullscreen_view">
         <argument
@@ -29,12 +29,12 @@
     </fragment>
     <fragment
         android:id="@+id/choosePacks"
-        android:name="net.marksheehan.doomtowndeckbuilder.ChoosePacksFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.ChoosePacksFragment"
         android:label="Choose Packs"
         tools:layout="@layout/choose_pack_layout" />
     <fragment
         android:id="@+id/chooseIdentity"
-        android:name="net.marksheehan.doomtowndeckbuilder.ChooseIdentityFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.ChooseIdentityFragment"
         android:label="Choose your identity"
         tools:layout="@layout/choose_identity">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/buildDeck"
-        android:name="net.marksheehan.doomtowndeckbuilder.BuildDeckFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.BuildDeckFragment"
         android:label="Build your deck"
         tools:layout="@layout/build_deck"></fragment>
 

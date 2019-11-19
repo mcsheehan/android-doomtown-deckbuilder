@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.marksheehan.doomtowndeckbuilder.CardViewerFragment">
+    tools:context="net.marksheehan.doomtowndeckbuilder.ui.CardViewerFragment">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"

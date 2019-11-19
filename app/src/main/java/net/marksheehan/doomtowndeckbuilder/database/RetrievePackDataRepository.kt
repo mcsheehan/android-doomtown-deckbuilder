@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder.viewmodels
+package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 
 import kotlinx.coroutines.Dispatchers.IO

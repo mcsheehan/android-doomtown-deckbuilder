@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder.viewmodels
+package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 import android.app.Activity
 import android.app.Application
@@ -6,10 +6,6 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 

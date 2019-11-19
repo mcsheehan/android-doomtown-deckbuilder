@@ -5,7 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.coroutineScope
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
-import net.marksheehan.doomtowndeckbuilder.viewmodels.DoThingsToCardLists
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.DoThingsToCardLists
 
 class PopulateDatabase(context : Context, workerParams : WorkerParameters) : CoroutineWorker(context, workerParams){
 

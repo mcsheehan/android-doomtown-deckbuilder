@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.ui
 
 import android.os.Bundle
 import android.view.View
@@ -10,11 +10,12 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.choose_identity.*
+import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
-import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtilities
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.utilities.getSnapPosition
-import net.marksheehan.doomtowndeckbuilder.viewmodels.CardViewerViewModel
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.CardViewerViewModel
 
 class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 {
@@ -30,7 +31,7 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
         snapHelper.attachToRecyclerView(identityChooser)
         createDeckButton.setOnClickListener(onSelectButtonPressed)
 
-        viewModel.allCardsFromSelectedPacks.observe(this, Observer<List<CardModel>> { cardList->
+        viewModel.cardsFromSelectedPacksSorted.observe(this, Observer<List<CardModel>> { cardList->
             outfitCardList = cardList.filter { it.type == "Outfit"}.sortedByDescending { it.gang }
             identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
         })

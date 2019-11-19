@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder.viewmodels
+package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

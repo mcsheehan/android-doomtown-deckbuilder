@@ -1,8 +1,7 @@
-package net.marksheehan.doomtowndeckbuilder.utilities
+package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 import android.content.Context
 import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
-import net.marksheehan.doomtowndeckbuilder.viewmodels.*
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.

@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder
+package net.marksheehan.doomtowndeckbuilder.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -12,6 +12,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import kotlinx.android.synthetic.main.activity_layout.*
+import net.marksheehan.doomtowndeckbuilder.NavigationGraphDirections
+import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.database.MainDatabase
 
 class MainNavHostActivity : AppCompatActivity(R.layout.activity_layout) {
