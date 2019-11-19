@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.build_deck.*
-import kotlinx.android.synthetic.main.choose_pack_layout.view.*
-import net.marksheehan.doomtowndeckbuilder.adapters.CardAdapter
 import net.marksheehan.doomtowndeckbuilder.utilities.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.viewmodels.BuildDeckViewModel
 
