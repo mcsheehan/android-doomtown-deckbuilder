@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 
-class DoThingsToCardLists(application: Application) {
+class CardSerialisationUtilities(application: Application) {
     val cards : List<CardModel> = loadInitialCardList(application)
     val cardPacks : Set<String> = createCardPackList(cards)
     val selectedCardPacks : MutableLiveData<MutableMap<String, Boolean>> = loadInitialSelectedCardPacks(application)

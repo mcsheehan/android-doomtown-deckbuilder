@@ -21,14 +21,13 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
         InjectorUtilities.providePackChooserViewModel(requireContext())
     }
 
-    private lateinit var packListAdapter : PackListAdapter
+    private val packClickListener : (PackEntity) -> Unit =  { packEntity -> viewModel.updatePack(packEntity)}
+    private val packListAdapter : PackListAdapter = PackListAdapter(packClickListener)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        packListAdapter = PackListAdapter { it -> viewModel.updatePack(it)}
-
         view.pack_list_recycler_view.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         view.pack_list_recycler_view.adapter = packListAdapter
+
         val itemDecoration = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
         view.pack_list_recycler_view.addItemDecoration(itemDecoration)
 

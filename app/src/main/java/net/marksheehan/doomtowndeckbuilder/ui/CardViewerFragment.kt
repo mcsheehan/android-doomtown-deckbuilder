@@ -34,6 +34,7 @@ class CardViewerFragment : Fragment(R.layout.card_grid_view) {
 
         viewModel.cardsFromSelectedPacksSorted.observe(this, Observer { cards ->
             cardAdapter.submitList(cards)
+            cardAdapter.notifyDataSetChanged()
         })
     }
 }
