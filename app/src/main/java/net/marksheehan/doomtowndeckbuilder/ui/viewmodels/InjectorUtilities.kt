@@ -24,8 +24,13 @@ object InjectorUtilities {
         return CardViewerViewModelFactory(repository)
     }
 
-    fun providePackChooserViewModel(context: Context ): PackChooserViewModelFactory {
+    fun providePackChooserViewModel(context: Context ): ChoosePacksViewModelFactory {
         val repository = getPackDataRepository(context)
-        return PackChooserViewModelFactory(repository)
+        return ChoosePacksViewModelFactory(repository)
+    }
+
+    fun provideChooseIdentityViewModel(context: Context) : ChooseIdentityViewModelFactory{
+        val repository = getPackDataRepository(context)
+        return ChooseIdentityViewModelFactory(repository)
     }
 }

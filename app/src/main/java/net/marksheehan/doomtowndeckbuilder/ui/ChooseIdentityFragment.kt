@@ -15,13 +15,12 @@ import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.utilities.getSnapPosition
-import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.CardViewerViewModel
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.ChooseIdentityViewModel
 
 class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 {
-    private val viewModel: CardViewerViewModel by viewModels {
-        InjectorUtilities.provideCardViewerViewModel(requireContext())
-    }
+    private val viewModel: ChooseIdentityViewModel by viewModels {
+        InjectorUtilities.provideChooseIdentityViewModel(requireContext())}
 
     lateinit var snapHelper : PagerSnapHelper
     lateinit var outfitCardList : List<CardModel>
@@ -31,14 +30,13 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
         snapHelper.attachToRecyclerView(identityChooser)
         createDeckButton.setOnClickListener(onSelectButtonPressed)
 
-        viewModel.cardsFromSelectedPacksSorted.observe(this, Observer<List<CardModel>> { cardList->
-            outfitCardList = cardList.filter { it.type == "Outfit"}.sortedByDescending { it.gang }
+        viewModel.filteredData.observe(this, Observer<List<CardModel>> { cardList->
+            outfitCardList = cardList
             identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
         })
     }
 
-    val onSelectButtonPressed = View.OnClickListener { view: View ->
-
+    private val onSelectButtonPressed = View.OnClickListener { view: View ->
         val position = snapHelper.getSnapPosition(identityChooser)
 
         if(position == RecyclerView.NO_POSITION){

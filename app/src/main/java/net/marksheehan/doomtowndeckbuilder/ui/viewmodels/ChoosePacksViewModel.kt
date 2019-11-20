@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 import net.marksheehan.doomtowndeckbuilder.database.PackEntity
 
 
-class PackChooserViewModel internal constructor(private val cardRepository: RetrievePackDataRepository) : ViewModel() {
+class ChoosePacksViewModel internal constructor(private val cardRepository: RetrievePackDataRepository) : ViewModel() {
 
     var livePacks : MutableLiveData<List<PackEntity>> = MutableLiveData()
 

@@ -3,12 +3,12 @@ package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class PackChooserViewModelFactory(
+class ChoosePacksViewModelFactory(
         private val repository: RetrievePackDataRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return PackChooserViewModel(repository) as T
+        return ChoosePacksViewModel(repository) as T
     }
 }
