@@ -5,7 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.coroutineScope
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
-import net.marksheehan.doomtowndeckbuilder.viewmodels.DoThingsToCardLists
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.CardSerialisationUtilities
 
 class PopulateDatabase(context : Context, workerParams : WorkerParameters) : CoroutineWorker(context, workerParams){
 
@@ -15,7 +15,7 @@ class PopulateDatabase(context : Context, workerParams : WorkerParameters) : Cor
         fun populateDatabase(context : Context) {
 
             val cardModel = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context,"card_list.json")
-            val packList = DoThingsToCardLists.createCardPackList(cardModel)
+            val packList = CardSerialisationUtilities.createCardPackList(cardModel)
 
             val packEntityList : MutableList<PackEntity> = mutableListOf()
 
@@ -31,7 +31,7 @@ class PopulateDatabase(context : Context, workerParams : WorkerParameters) : Cor
     override suspend fun doWork(): Result = coroutineScope{
 //            populateDatabase(applicationContext)
             val cardModel = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(applicationContext,"card_list.json")
-            val packList = DoThingsToCardLists.createCardPackList(cardModel)
+            val packList = CardSerialisationUtilities.createCardPackList(cardModel)
 
             val packEntityList : MutableList<PackEntity> = mutableListOf()
 

@@ -1,46 +1,40 @@
 package net.marksheehan.doomtowndeckbuilder.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card_small_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
-class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(val onCardModelClicked : (CardModel)-> Unit) : ListAdapter<CardModel, CardAdapter.CardViewHolder>(CardModelDiff())  {
 
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var cardImage: ImageView
+    class CardModelDiff : DiffUtil.ItemCallback<CardModel>() {
 
-        val onItemClicked = OnClickListener { view: View ->
-            val currentCard = mItemList.get(adapterPosition)
-
-            val bundle = Bundle()
-            bundle.putParcelable(null, currentCard)
-            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)
+        override fun areItemsTheSame(oldItem: CardModel, newItem: CardModel): Boolean {
+            return (oldItem.cardId == newItem.cardId)
         }
 
-        init {
-            cardImage = itemView.findViewById(R.id.cardImage)
-            itemView.setOnClickListener(onItemClicked)
+        override fun areContentsTheSame(oldItem: CardModel, newItem: CardModel): Boolean {
+            return (oldItem.cardId != newItem.cardId)
         }
     }
 
-    fun getClickListenerForCardPosition(position: Int) : OnClickListener{
+    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val clickListener = OnClickListener() {view: View  ->
-            val currentCard = mItemList.get(position)
-            val bundle = Bundle()
-            bundle.putParcelable(null, currentCard)
-            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)
+        fun bindCardModelToViewHolder(cardModel: CardModel){
+            itemView.setOnClickListener{onCardModelClicked(cardModel)}
+
+            Picasso.get()
+                    .load(cardModel.getImagePath())
+                    .placeholder(R.drawable.card_back)
+                    .error(R.drawable.card_back)
+                    .into(itemView.cardImage)
         }
-
-        return clickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
@@ -48,12 +42,8 @@ class CardAdapter(private val mItemList: List<CardModel>) : RecyclerView.Adapter
         return CardViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val currentCard = mItemList[position]
-        Picasso.get().load(currentCard.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(holder.cardImage)
-    }
-
-    override fun getItemCount(): Int {
-        return mItemList.size
+    override fun onBindViewHolder(cardViewHolder: CardViewHolder, position: Int) {
+        val currentCard = getItem(position)
+        cardViewHolder.bindCardModelToViewHolder(currentCard)
     }
 }

@@ -1,11 +1,8 @@
 package net.marksheehan.doomtowndeckbuilder;
 
-import android.app.UiAutomation;
-
-import androidx.test.core.app.ApplicationProvider;
 import androidx.test.rule.ActivityTestRule;
 
-import com.google.android.material.internal.NavigationMenu;
+import net.marksheehan.doomtowndeckbuilder.ui.MainNavHostActivity;
 
 import org.junit.ClassRule;
 import org.junit.Rule;
