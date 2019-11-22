@@ -3,7 +3,6 @@ package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 import android.app.Activity
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
@@ -11,8 +10,6 @@ import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJso
 
 class CardSerialisationUtilities(application: Application) {
     val cards : List<CardModel> = loadInitialCardList(application)
-    val cardPacks : Set<String> = createCardPackList(cards)
-    val selectedCardPacks : MutableLiveData<MutableMap<String, Boolean>> = loadInitialSelectedCardPacks(application)
 
     private fun loadInitialCardList(context : Context)  : List<CardModel> {
         val cardModel = ParseCardListFromJsonFileUsingGson.parseCardListFromAssetFile(context,"card_list.json")
@@ -25,6 +22,7 @@ class CardSerialisationUtilities(application: Application) {
             cards.forEach { card: CardModel -> allPacksSet.add(card.pack) }
             return allPacksSet
         }
+
         private fun deserialiseSelectedPackMapFromSharedPreferences(activity: Activity): Map<String, Boolean>? {
 
             val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
@@ -39,23 +37,5 @@ class CardSerialisationUtilities(application: Application) {
             val cardListResult = Gson().fromJson<Map<String, Boolean>>(jsonString, cardModelType)
             return cardListResult
         }
-
-        private fun loadInitialSelectedCardPacks(context: Context): MutableLiveData<MutableMap<String, Boolean>> {
-            //Load first. If this fails then initialise
-//        deserialiseSelectedPackMapFromSharedPreferences()
-
-            val cardPacksChecked = MutableLiveData<MutableMap<String, Boolean>>()
-            val cardPacksSelected: MutableMap<String, Boolean> = mutableMapOf()
-
-//            cardPacks.forEach { cardPacksSelected.isSelected(it, true) }
-
-            cardPacksChecked.value = cardPacksSelected
-
-            return cardPacksChecked
-        }
-
-//        fun filterCardsBySelectedPacks(): List<CardModel> {
-//            return cards.filter { selectedCardPacks.value!![it.pack]!! }
-//        }
     }
 }
