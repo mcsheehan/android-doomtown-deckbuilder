@@ -2,16 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <data>
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
-            name="viewModel"
-            type="net.marksheehan.doomtowndeckbuilder.viewmodels.BuildDeckViewModel"/>
-    </data>
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
