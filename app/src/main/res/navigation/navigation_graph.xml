@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/chooseIdentity">
+    app:startDestination="@id/createNewDeck">
+
+    <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
+    <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />
 
     <fragment
         android:id="@+id/cardViewerFragment"
@@ -36,7 +39,7 @@
         tools:layout="@layout/choose_pack_layout" />
 
     <fragment
-        android:id="@+id/chooseIdentity"
+        android:id="@+id/createNewDeck"
         android:name="net.marksheehan.doomtowndeckbuilder.ui.ChooseIdentityFragment"
         android:label="Choose your identity"
         tools:layout="@layout/choose_identity">
@@ -57,7 +60,13 @@
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
-    <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
-    <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />
+    <fragment android:id="@+id/viewCreatedDecks" >
+        <action
+            android:id="@+id/action_viewCreatedDecks_to_chooseIdentity"
+            app:destination="@id/createNewDeck" />
+        <action
+            android:id="@+id/action_viewCreatedDecks_to_buildDeck"
+            app:destination="@id/buildDeck" />
+    </fragment>
 
 </navigation>
