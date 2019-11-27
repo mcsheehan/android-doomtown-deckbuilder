@@ -10,8 +10,9 @@ import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.databinding.DescriptiveCardViewBinding
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
+import net.marksheehan.doomtowndeckbuilder.datamodel.CardModelAndNumberSelected
 
-class DescriptiveCardAdapter(val onCardModelClicked : (CardModel)-> Unit) : ListAdapter<CardModel, DescriptiveCardAdapter.CardViewHolder>(CardModelDiff())  {
+class DescriptiveCardAdapter(val onCardModelClicked : (CardModelAndNumberSelected)-> Unit) : ListAdapter<CardModel, DescriptiveCardAdapter.CardViewHolder>(CardModelDiff())  {
 
     class CardModelDiff : DiffUtil.ItemCallback<CardModel>() {
 
@@ -26,10 +27,10 @@ class DescriptiveCardAdapter(val onCardModelClicked : (CardModel)-> Unit) : List
 
     inner class CardViewHolder(public val binding: DescriptiveCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindCardModelToViewHolder(cardModel: CardModel) {
+        fun bindCardModelToViewHolder(cardModel: CardModelAndNumberSelected) {
 
             binding.descriptiveCardModel = cardModel
-            Picasso.get().load(cardModel.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.cardImage)
+            Picasso.get().load(cardModel.cardModel.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.cardImage)
             itemView.setOnClickListener{onCardModelClicked(cardModel)}
 
             binding.executePendingBindings()
@@ -37,15 +38,13 @@ class DescriptiveCardAdapter(val onCardModelClicked : (CardModel)-> Unit) : List
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-//        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.descriptive_card_view, parent, false)
-
         val binding : DescriptiveCardViewBinding = DescriptiveCardViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return CardViewHolder(binding)
     }
 
     override fun onBindViewHolder(cardViewHolder: CardViewHolder, position: Int) {
         val currentCard = getItem(position)
-        cardViewHolder.bindCardModelToViewHolder(currentCard)
+        val modelAndNumberSelected = CardModelAndNumberSelected(currentCard, 0)
+        cardViewHolder.bindCardModelToViewHolder(modelAndNumberSelected)
     }
 }

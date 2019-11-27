@@ -10,7 +10,7 @@
         <import type="android.text.Html"/>
         <variable
             name="descriptiveCardModel"
-            type="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
+            type="net.marksheehan.doomtowndeckbuilder.datamodel.CardModelAndNumberSelected" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginStart="8dp"
-                android:text="@{descriptiveCardModel.title}"
+                android:text="@{descriptiveCardModel.cardModel.title}"
                 app:layout_constraintStart_toEndOf="@+id/cardImage"
                 app:layout_constraintTop_toTopOf="@+id/cardImage"
                 tools:text="Title" />
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
-                android:text="@{descriptiveCardModel.suit}"
+                android:text="@{descriptiveCardModel.cardModel.suit}"
                 app:layout_constraintBottom_toBottomOf="@+id/cardName"
                 app:layout_constraintStart_toEndOf="@+id/cardName"
                 app:layout_constraintTop_toTopOf="@+id/cardName"
@@ -59,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{Html.fromHtml(descriptiveCardModel.text)}"
+                android:text="@{Html.fromHtml(descriptiveCardModel.cardModel.text)}"
                 app:layout_constraintEnd_toStartOf="@+id/number_picker"
                 app:layout_constraintStart_toStartOf="@+id/cardName"
                 app:layout_constraintTop_toBottomOf="@+id/cardName"
