@@ -34,25 +34,30 @@
                 app:srcCompat="@drawable/card_back" />
 
             <TextView
+                android:id="@+id/suit"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:text=""
+
+                app:layout_constraintStart_toEndOf="@+id/cardImage"
+                app:layout_constraintTop_toTopOf="@+id/cardImage"
+
+
+                tools:text="7♦"/>
+
+            <TextView
                 android:id="@+id/cardName"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginStart="8dp"
                 android:text="@{descriptiveCardModel.cardModel.title}"
-                app:layout_constraintStart_toEndOf="@+id/cardImage"
-                app:layout_constraintTop_toTopOf="@+id/cardImage"
-                tools:text="Title" />
 
-            <TextView
-                android:id="@+id/type"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:text="@{descriptiveCardModel.cardModel.suit}"
-                app:layout_constraintBottom_toBottomOf="@+id/cardName"
-                app:layout_constraintStart_toEndOf="@+id/cardName"
-                app:layout_constraintTop_toTopOf="@+id/cardName"
-                tools:text="Type"/>
+                app:layout_constraintBottom_toBottomOf="@+id/suit"
+                app:layout_constraintStart_toEndOf="@+id/suit"
+                app:layout_constraintTop_toTopOf="@+id/suit"
+
+                tools:text="Title" />
 
             <TextView
                 android:id="@+id/cardDescription"
@@ -61,8 +66,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@{Html.fromHtml(descriptiveCardModel.cardModel.text)}"
                 app:layout_constraintEnd_toStartOf="@+id/number_picker"
-                app:layout_constraintStart_toStartOf="@+id/cardName"
-                app:layout_constraintTop_toBottomOf="@+id/cardName"
+                app:layout_constraintStart_toStartOf="@+id/suit"
+                app:layout_constraintTop_toBottomOf="@+id/suit"
                 tools:text="Description" />
 
             <com.travijuu.numberpicker.library.NumberPicker

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.databinding.DescriptiveCardViewBinding
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
@@ -25,11 +24,32 @@ class DescriptiveCardAdapter(val onCardModelClicked : (CardModelAndNumberSelecte
         }
     }
 
-    inner class CardViewHolder(public val binding: DescriptiveCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CardViewHolder(private val binding: DescriptiveCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindCardModelToViewHolder(cardModel: CardModelAndNumberSelected) {
 
             binding.descriptiveCardModel = cardModel
+
+            val suitSymbol : String = when(cardModel.cardModel.suit){
+                "Diams" -> "♦"
+                "Hearts" -> "♥"
+                "Spades" -> "♠"
+                "Clubs" -> "♣"
+                else -> ""
+            }
+
+            val numberString : String = when(cardModel.cardModel.rank){
+                1L -> "A"
+                in 2L..10L -> cardModel.cardModel.rank.toString()
+                11L -> "J"
+                12L -> "Q"
+                13L -> "K"
+                else -> ""
+            }
+
+            val suitAndRank : String = numberString + suitSymbol
+            binding.suit.text = suitAndRank
+
             Picasso.get().load(cardModel.cardModel.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.cardImage)
             itemView.setOnClickListener{onCardModelClicked(cardModel)}
 
