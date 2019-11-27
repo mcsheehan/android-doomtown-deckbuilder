@@ -1,5 +1,6 @@
 package net.marksheehan.doomtowndeckbuilder
 
+import android.os.Build
 import androidx.test.platform.app.InstrumentationRegistry
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 
@@ -9,10 +10,12 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.robolectric.annotation.Config
 import java.io.File
 
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Build.VERSION_CODES.P])
 public class DownloadAllImagesTest{
 
     fun downloadSingleImage(downloadUrl : String, saveFilePath : String){

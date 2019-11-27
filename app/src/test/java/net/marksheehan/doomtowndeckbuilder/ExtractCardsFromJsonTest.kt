@@ -1,5 +1,6 @@
 package net.marksheehan.doomtowndeckbuilder
 
+import android.os.Build
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,9 +8,11 @@ import org.robolectric.RobolectricTestRunner
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingMoshi
 import org.junit.Assert.*
+import org.robolectric.annotation.Config
 
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Build.VERSION_CODES.P])
 class ExtractCardsFromJsonTest {
 
     @Test
