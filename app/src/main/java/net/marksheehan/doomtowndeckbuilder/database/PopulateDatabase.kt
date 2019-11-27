@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.coroutineScope
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.internetdatabase.ParseCardListFromJsonFileUsingGson
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.CardSerialisationUtilities
 

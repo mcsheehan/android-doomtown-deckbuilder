@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 
 @Entity(tableName="CardModel",
         foreignKeys = arrayOf(ForeignKey(entity = PackEntity::class,

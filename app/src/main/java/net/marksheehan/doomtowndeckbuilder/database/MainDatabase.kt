@@ -7,6 +7,8 @@ import android.content.Context
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 /**

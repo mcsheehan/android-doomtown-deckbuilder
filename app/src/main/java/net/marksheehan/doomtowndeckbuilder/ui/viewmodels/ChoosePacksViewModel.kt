@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 
 
 class ChoosePacksViewModel internal constructor(private val cardRepository: RetrievePackDataRepository) : ViewModel() {

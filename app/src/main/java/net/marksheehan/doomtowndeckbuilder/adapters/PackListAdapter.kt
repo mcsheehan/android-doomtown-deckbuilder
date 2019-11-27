@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.text_and_checkbox_item.view.*
 import net.marksheehan.doomtowndeckbuilder.R
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 
 class PackListAdapter(private val onPackEntityClicked : (PackEntity)-> Unit) :
         ListAdapter<PackEntity, PackListAdapter.ItemViewHolder>(PackEntityDiff()) {

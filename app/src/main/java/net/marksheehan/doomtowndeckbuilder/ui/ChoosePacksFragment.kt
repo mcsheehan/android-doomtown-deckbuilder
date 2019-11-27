@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.choose_pack_layout.view.*
 import net.marksheehan.doomtowndeckbuilder.adapters.PackListAdapter
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.ChoosePacksViewModel
 import androidx.recyclerview.widget.DividerItemDecoration

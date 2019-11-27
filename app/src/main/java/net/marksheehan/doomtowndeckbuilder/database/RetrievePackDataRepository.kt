@@ -3,7 +3,7 @@ package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
-import net.marksheehan.doomtowndeckbuilder.database.PackEntity
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.database.RetrievePackDao
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 

@@ -3,6 +3,7 @@ package net.marksheehan.doomtowndeckbuilder.database;
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 

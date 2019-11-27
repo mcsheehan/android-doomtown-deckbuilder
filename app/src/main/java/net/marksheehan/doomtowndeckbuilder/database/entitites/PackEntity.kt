@@ -1,4 +1,4 @@
-package net.marksheehan.doomtowndeckbuilder.database
+package net.marksheehan.doomtowndeckbuilder.database.entitites
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
