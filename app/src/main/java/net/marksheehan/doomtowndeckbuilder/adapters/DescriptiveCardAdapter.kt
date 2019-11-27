@@ -27,11 +27,13 @@ class DescriptiveCardAdapter(val onCardModelClicked : (CardModel)-> Unit) : List
     inner class CardViewHolder(public val binding: DescriptiveCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindCardModelToViewHolder(cardModel: CardModel) {
+
             binding.descriptiveCardModel = cardModel
             Picasso.get().load(cardModel.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.cardImage)
+            itemView.setOnClickListener{onCardModelClicked(cardModel)}
+
             binding.executePendingBindings()
         }
-//            itemView.setOnClickListener{onCardModelClicked(cardModel)}
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {

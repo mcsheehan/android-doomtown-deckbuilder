@@ -25,10 +25,9 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
 
         build_deck_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
-
         val clickListener : (CardModel) -> Unit = {
-
         }
+
         adapter = DescriptiveCardAdapter(clickListener)
         build_deck_recycler.adapter = adapter
 
