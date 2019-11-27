@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.build_deck.*
 import net.marksheehan.doomtowndeckbuilder.R
@@ -43,6 +44,9 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
         build_deck_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         val clickListener : (CardModelAndNumberSelected) -> Unit = {
+            val bundle = Bundle()
+            bundle.putParcelable(null, it.cardModel)
+            Navigation.findNavController(view).navigate(R.id.action_buildDeck_to_individualCardView, bundle)
         }
 
         adapter = DescriptiveCardAdapter(clickListener)

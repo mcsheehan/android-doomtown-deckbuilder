@@ -18,6 +18,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/individualCardView"
         android:name="net.marksheehan.doomtowndeckbuilder.ui.FullScreenCardFragment"
@@ -27,11 +28,13 @@
             android:name="card"
             app:argType="net.marksheehan.doomtowndeckbuilder.datamodel.CardModel" />
     </fragment>
+
     <fragment
         android:id="@+id/choosePacks"
         android:name="net.marksheehan.doomtowndeckbuilder.ui.ChoosePacksFragment"
         android:label="Choose Packs"
         tools:layout="@layout/choose_pack_layout" />
+
     <fragment
         android:id="@+id/chooseIdentity"
         android:name="net.marksheehan.doomtowndeckbuilder.ui.ChooseIdentityFragment"
@@ -41,12 +44,20 @@
             android:id="@+id/action_chooseIdentity_to_chooseCards"
             app:destination="@id/buildDeck" />
     </fragment>
+
     <fragment
         android:id="@+id/buildDeck"
         android:name="net.marksheehan.doomtowndeckbuilder.ui.BuildDeckFragment"
         android:label="Build your deck"
-        tools:layout="@layout/build_deck"></fragment>
+        tools:layout="@layout/build_deck">
+        <action
+            android:id="@+id/action_buildDeck_to_individualCardView"
+            app:destination="@id/individualCardView"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
 
     <action android:id="@+id/action_global_cardViewerFragment" app:destination="@id/cardViewerFragment" />
     <action android:id="@+id/action_global_choosePacks" app:destination="@id/choosePacks" />
+
 </navigation>
