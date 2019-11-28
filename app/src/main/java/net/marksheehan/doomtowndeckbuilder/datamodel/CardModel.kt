@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName
 import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 
 @Entity(tableName="CardModel",
-        foreignKeys = arrayOf(ForeignKey(entity = PackEntity::class,
+        foreignKeys = [ForeignKey(entity = PackEntity::class,
                 parentColumns = arrayOf("packname"),
                 childColumns = arrayOf("pack"),
-                onDelete = ForeignKey.SET_DEFAULT)))
+                onDelete = ForeignKey.SET_DEFAULT)])
 class CardModel() : Parcelable {
 
     @PrimaryKey(autoGenerate = true)

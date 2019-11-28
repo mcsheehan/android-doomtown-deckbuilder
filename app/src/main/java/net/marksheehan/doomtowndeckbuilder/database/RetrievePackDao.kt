@@ -3,6 +3,9 @@ package net.marksheehan.doomtowndeckbuilder.database;
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import net.marksheehan.doomtowndeckbuilder.database.entitites.CardAndNumberOfCards
+import net.marksheehan.doomtowndeckbuilder.database.entitites.CardIdAndNumberOf
+import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
@@ -17,6 +20,15 @@ interface RetrievePackDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPackList(packs : List<PackEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCardIdAndNumberOfForDeck(cardIdAndNumberOf: CardIdAndNumberOf)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun createDeck(deck : DeckEntity)
+
+    @Query("SELECT CardModel.*, numberOfCards AS numberOfCards FROM CardIdAndNumberOf INNER JOIN CardModel ON CardIdAndNumberOf.cardId WHERE CardIdAndNumberOf.deckId IS :deckId")
+    fun getAllCardAndNumberOfCardsForGivenDeckId(deckId : Long) : LiveData<List<CardAndNumberOfCards>>
 
     @Update
     fun updatePack(pack: PackEntity)

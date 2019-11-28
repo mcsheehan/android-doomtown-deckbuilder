@@ -7,6 +7,7 @@ import android.content.Context
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import net.marksheehan.doomtowndeckbuilder.database.entitites.CardIdAndNumberOf
 import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
@@ -14,7 +15,7 @@ import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 /**
  * The Room database that contains the Users table
  */
-@Database(entities = arrayOf(CardModel::class, DeckEntity::class, PackEntity::class), version = 1)
+@Database(entities = [CardModel::class, DeckEntity::class, PackEntity::class, CardIdAndNumberOf::class], version = 1)
 
 abstract class MainDatabase : RoomDatabase() {
 
