@@ -1,13 +1,15 @@
 package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.launch
+import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 class ChooseIdentityViewModel internal constructor(private val cardRepository: RetrievePackDataRepository) : ViewModel() {
 
     private val cardsFromSelectedPacks: LiveData<List<CardModel>> = cardRepository.getAllCardsFromSelectedPacks()
 
-    val outfitCardsSorted = MediatorLiveData<List<CardModel>>()
+    private val outfitCardsSorted = MediatorLiveData<List<CardModel>>()
 
     val filteredData: LiveData<List<CardModel>> get() = Transformations.map(cardsFromSelectedPacks) { cardModelList: List<CardModel> ->
         cardModelList.filter { it.type == "Outfit" }
@@ -30,6 +32,14 @@ class ChooseIdentityViewModel internal constructor(private val cardRepository: R
 
     fun changeCurrentFilter(filter: ValidOutfits) {
         currentFilter = filter
+    }
+
+    fun createNewDeck(cardModel: CardModel, deckName : String, deckDescription : String){
+
+        val newDeck = DeckEntity(identityCardId = cardModel.cardId, deckname = deckName, description = deckDescription)
+        val createDeckJob = viewModelScope.launch {
+            cardRepository.createDeck(newDeck)
+        }
     }
 
     init {

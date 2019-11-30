@@ -33,4 +33,10 @@ object InjectorUtilities {
         val repository = getPackDataRepository(context)
         return ChooseIdentityViewModelFactory(repository)
     }
+
+    fun provideViewDecksViewModel(context: Context) : ViewDecksViewModelFactory{
+        val repository = getPackDataRepository(context)
+        return ViewDecksViewModelFactory(repository)
+    }
+
 }

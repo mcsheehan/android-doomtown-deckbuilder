@@ -7,8 +7,8 @@ import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 @Entity(tableName="DeckEntity")
 class DeckEntity(
-    @PrimaryKey
-    val deckId : Long,
+    @PrimaryKey(autoGenerate = true)
+    val deckId : Long = 0,
 
     @ForeignKey(entity = CardModel::class, parentColumns = arrayOf("identityCardId"), childColumns = arrayOf("cardId"))
     val identityCardId : Long,

@@ -1,10 +1,12 @@
 package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import net.marksheehan.doomtowndeckbuilder.database.entitites.PackEntity
 import net.marksheehan.doomtowndeckbuilder.database.RetrievePackDao
+import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
 class RetrievePackDataRepository private constructor(
@@ -16,6 +18,16 @@ class RetrievePackDataRepository private constructor(
             cardPackDao.insertCardList(card)
         }
     }
+
+    suspend fun createDeck(deck : DeckEntity) {
+        withContext(IO) {
+            cardPackDao.createDeck(deck)
+        }
+    }
+
+    fun getAllDecks() : LiveData<List<DeckEntity>> = cardPackDao.getAllDecksList()
+
+    fun getIdentityCardsAndDecks() = cardPackDao.getIdentityCardsAndDecks()
 
     fun getAllCardsFromSelectedPacks() = cardPackDao.getAllCardsFromSelectedPacks()
 

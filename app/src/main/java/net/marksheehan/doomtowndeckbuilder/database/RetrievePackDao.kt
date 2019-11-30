@@ -30,6 +30,9 @@ interface RetrievePackDao{
     @Query("SELECT CardModel.*, numberOfCards AS numberOfCards FROM CardIdAndNumberOf INNER JOIN CardModel ON CardIdAndNumberOf.cardId WHERE CardIdAndNumberOf.deckId IS :deckId")
     fun getAllCardAndNumberOfCardsForGivenDeckId(deckId : Long) : LiveData<List<CardAndNumberOfCards>>
 
+    @Query("SELECT * FROM DeckEntity INNER JOIN CardModel ON DeckEntity.identityCardId == CardModel.cardId")
+    fun getIdentityCardsAndDecks() : LiveData<List<CardAndDeck>>
+
     @Update
     fun updatePack(pack: PackEntity)
 
@@ -41,6 +44,9 @@ interface RetrievePackDao{
 
     @Query("SELECT * FROM PackEntity")
     fun getAllPacksList() : List<PackEntity>
+
+    @Query("SELECT * FROM DeckEntity")
+    fun getAllDecksList() : LiveData<List<DeckEntity>>
 
     @Query("SELECT * FROM PackEntity")
     fun getAllPacksLiveList() : LiveData<List<PackEntity>>
