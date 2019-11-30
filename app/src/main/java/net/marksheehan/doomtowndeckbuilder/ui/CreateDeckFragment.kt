@@ -46,7 +46,8 @@ class CreateDeckFragment : Fragment(R.layout.choose_identity)
         else {
             val selectedCard = outfitCardList[position]
             val description = ""
-            val deckName = view.deckName.text.toString()
+
+            val deckName = deckName.text.toString()
             viewModel.createNewDeck(selectedCard, deckName, description)
 
             Navigation.findNavController(view).navigate(CreateDeckFragmentDirections.actionChooseIdentityToChooseCards())
