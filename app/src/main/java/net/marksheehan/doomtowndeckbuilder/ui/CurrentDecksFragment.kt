@@ -14,7 +14,7 @@ import net.marksheehan.doomtowndeckbuilder.database.CardAndDeck
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.ViewDecksViewModel
 
-class ViewDecksFragment : Fragment(R.layout.view_decks){
+class CurrentDecksFragment : Fragment(R.layout.view_decks){
 
     private val viewModel: ViewDecksViewModel by viewModels {
         InjectorUtilities.provideViewDecksViewModel(requireContext())}
@@ -27,11 +27,14 @@ class ViewDecksFragment : Fragment(R.layout.view_decks){
         view.view_decks_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         view.createDeckFab.setOnClickListener{
-            val navDir = ViewDecksFragmentDirections.actionViewCreatedDecksToChooseIdentity()
+            val navDir = CurrentDecksFragmentDirections.actionViewCreatedDecksToChooseIdentity()
             Navigation.findNavController(view).navigate(navDir)
         }
 
-        val onClickListener : (CardAndDeck)-> Unit = {}
+        val onClickListener : (CardAndDeck)-> Unit = {
+            val navDir = CurrentDecksFragmentDirections.actionViewCreatedDecksToBuildDeck(it.deckEntity)
+            Navigation.findNavController(view).navigate(navDir)
+        }
         adapter = DescriptiveDeckAdapter(onClickListener)
         view.view_decks_recycler.adapter = adapter
 

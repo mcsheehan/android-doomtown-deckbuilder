@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/createNewDeck"
-        android:name="net.marksheehan.doomtowndeckbuilder.ui.CreateDeckFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.ChooseIdentityFragment"
         android:label="Choose your identity"
         tools:layout="@layout/choose_identity">
         <action
@@ -53,6 +53,10 @@
         android:name="net.marksheehan.doomtowndeckbuilder.ui.BuildDeckFragment"
         android:label="Build your deck"
         tools:layout="@layout/build_deck">
+        <argument
+            android:name="deck"
+            app:argType="net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity"
+            />
         <action
             android:id="@+id/action_buildDeck_to_individualCardView"
             app:destination="@id/individualCardView"
@@ -62,7 +66,7 @@
 
     <fragment
         android:id="@+id/viewCreatedDecks"
-        android:name="net.marksheehan.doomtowndeckbuilder.ui.ViewDecksFragment"
+        android:name="net.marksheehan.doomtowndeckbuilder.ui.CurrentDecksFragment"
         android:label="Current Decks"
         tools:layout="@layout/view_decks">
         <action

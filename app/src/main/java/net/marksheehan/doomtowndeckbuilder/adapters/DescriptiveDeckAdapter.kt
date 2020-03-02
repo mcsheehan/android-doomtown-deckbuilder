@@ -27,9 +27,12 @@ class DescriptiveDeckAdapter(val onCardModelClicked : (CardAndDeck )-> Unit) : L
     }
 
     inner class DeckViewHolder(private val binding: DescriptiveDeckItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bindDeckEntityToDeckViewHolder(cardAndDeck: CardAndDeck) {
             binding.cardAndDeck = cardAndDeck
             Picasso.get().load(cardAndDeck.card.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.identityCardImage)
+            itemView.setOnClickListener{onCardModelClicked(cardAndDeck)}
+
             binding.executePendingBindings()
         }
     }
