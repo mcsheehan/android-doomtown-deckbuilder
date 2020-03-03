@@ -1,7 +1,8 @@
 package net.marksheehan.doomtowndeckbuilder.ui.viewmodels
 
+import android.provider.Contacts
 import androidx.lifecycle.*
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 
@@ -34,12 +35,13 @@ class ChooseIdentityViewModel internal constructor(private val cardRepository: R
         currentFilter = filter
     }
 
-    fun createNewDeck(cardModel: CardModel, deckName : String, deckDescription : String){
-
+    fun createDeckEntity(cardModel: CardModel, deckName : String, deckDescription : String) : DeckEntity{
         val newDeck = DeckEntity(identityCardId = cardModel.cardId, deckname = deckName, description = deckDescription)
-        val createDeckJob = viewModelScope.launch {
-            cardRepository.createDeck(newDeck)
-        }
+        return newDeck
+    }
+
+    fun createNewDeck(newDeck : DeckEntity) : Deferred<Unit>{
+        return viewModelScope.async { cardRepository.createDeck(newDeck) }
     }
 
     init {

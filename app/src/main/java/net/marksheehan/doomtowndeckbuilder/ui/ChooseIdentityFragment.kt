@@ -10,15 +10,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.choose_identity.*
-import kotlinx.android.synthetic.main.choose_identity.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.adapters.FullScreenCardAdapter
-import net.marksheehan.doomtowndeckbuilder.database.CardAndDeck
 import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
+import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.ChooseIdentityViewModel
 import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.InjectorUtilities
 import net.marksheehan.doomtowndeckbuilder.utilities.getSnapPosition
-import net.marksheehan.doomtowndeckbuilder.ui.viewmodels.ChooseIdentityViewModel
 
 class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
 {
@@ -48,10 +46,14 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
         else {
             val selectedCard = outfitCardList[position]
             val description = ""
-
             val deckName = deckName.text.toString()
-            viewModel.createNewDeck(selectedCard, deckName, description)
-            // TODO ChooseIdentityFragmentDirections.actionChooseIdentityToChooseCards()
+
+            val newDeck = DeckEntity(identityCardId = selectedCard.cardId, deckname = deckName, description = description)
+
+            viewModel.createNewDeck(newDeck).invokeOnCompletion {
+                val navDir = ChooseIdentityFragmentDirections.actionChooseIdentityToChooseCards(newDeck)
+                Navigation.findNavController(view).navigate(navDir)
+            }
         }
     }
 }
