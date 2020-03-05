@@ -45,7 +45,8 @@
         tools:layout="@layout/choose_identity">
         <action
             android:id="@+id/action_chooseIdentity_to_chooseCards"
-            app:destination="@id/buildDeck" />
+            app:destination="@id/buildDeck"
+            app:popUpTo="@id/viewCreatedDecks" />
     </fragment>
 
     <fragment

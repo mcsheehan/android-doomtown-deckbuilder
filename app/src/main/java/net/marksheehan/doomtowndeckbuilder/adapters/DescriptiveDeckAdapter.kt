@@ -1,14 +1,11 @@
 package net.marksheehan.doomtowndeckbuilder.adapters
 
-import net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.card_fullscreen_view.view.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.database.CardAndDeck
 import net.marksheehan.doomtowndeckbuilder.databinding.DescriptiveDeckItemBinding
