@@ -38,7 +38,7 @@ class CurrentDecksFragment : Fragment(R.layout.view_decks){
         adapter = DescriptiveDeckAdapter(onClickListener)
         view.view_decks_recycler.adapter = adapter
 
-        viewModel.cardsAndDecks.observe(this, Observer<List<CardAndDeck>> {
+        viewModel.cardsAndDecks.observe(viewLifecycleOwner, Observer<List<CardAndDeck>> {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
