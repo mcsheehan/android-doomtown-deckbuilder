@@ -31,7 +31,7 @@ class ChoosePacksFragment : Fragment(R.layout.choose_pack_layout) {
         val itemDecoration = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
         view.pack_list_recycler_view.addItemDecoration(itemDecoration)
 
-        viewModel.livePacks.observe(this, Observer<List<PackEntity>> { packList ->
+        viewModel.livePacks.observe(viewLifecycleOwner, Observer<List<PackEntity>> { packList ->
             packListAdapter.submitList(packList)
             packListAdapter.notifyDataSetChanged()
         })

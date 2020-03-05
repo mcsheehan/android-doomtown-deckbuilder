@@ -52,8 +52,7 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
         adapter = DescriptiveCardAdapter(clickListener)
         build_deck_recycler.adapter = adapter
 
-
-        viewModel.allCardsFromSelectedPacks.observe(this, Observer{
+        viewModel.allCardsFromSelectedPacks.observe(viewLifecycleOwner, Observer{
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })

@@ -31,7 +31,7 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
         snapHelper.attachToRecyclerView(identityChooser)
         createDeckButton.setOnClickListener(onSelectButtonPressed)
 
-        viewModel.filteredData.observe(this, Observer<List<CardModel>> { cardList->
+        viewModel.filteredData.observe(viewLifecycleOwner, Observer<List<CardModel>> { cardList->
             outfitCardList = cardList
             identityChooser.adapter = FullScreenCardAdapter(outfitCardList)
         })
@@ -51,7 +51,7 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
             val newDeck = DeckEntity(identityCardId = selectedCard.cardId, deckname = deckName, description = description)
 
             viewModel.createNewDeck(newDeck).invokeOnCompletion {
-                val navDir = ChooseIdentityFragmentDirections.actionChooseIdentityToChooseCards(newDeck)
+                val navDir = ChooseIdentityFragmentDirections.actionCreateNewDeckToPlaceholder(newDeck)
                 Navigation.findNavController(view).navigate(navDir)
             }
         }

@@ -32,7 +32,7 @@ class CardViewerFragment : Fragment(R.layout.card_grid_view) {
         cardAdapter = CardAdapter(clickListener)
         card_recycler.adapter = cardAdapter
 
-        viewModel.cardsFromSelectedPacksSorted.observe(this, Observer { cards ->
+        viewModel.cardsFromSelectedPacksSorted.observe(viewLifecycleOwner, Observer { cards ->
             cardAdapter.submitList(cards)
             cardAdapter.notifyDataSetChanged()
         })
