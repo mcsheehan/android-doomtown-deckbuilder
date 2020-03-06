@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.travijuu.numberpicker.library.Enums.ActionEnum
+import com.travijuu.numberpicker.library.Interface.ValueChangedListener
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.databinding.DescriptiveCardViewBinding
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModel
 import net.marksheehan.doomtowndeckbuilder.datamodel.CardModelAndNumberSelected
 
-class DescriptiveCardAdapter(val onCardModelClicked : (CardModelAndNumberSelected)-> Unit) : ListAdapter<CardModel, DescriptiveCardAdapter.CardViewHolder>(CardModelDiff())  {
+class DescriptiveCardAdapter(val onCardModelClicked : (CardModelAndNumberSelected)-> Unit, val onSpinnerUpdated : (CardModelAndNumberSelected)-> Unit) :
+        ListAdapter<CardModel, DescriptiveCardAdapter.CardViewHolder>(CardModelDiff())  {
 
     class CardModelDiff : DiffUtil.ItemCallback<CardModel>() {
 
@@ -49,6 +52,13 @@ class DescriptiveCardAdapter(val onCardModelClicked : (CardModelAndNumberSelecte
 
             val suitAndRank : String = numberString + suitSymbol
             binding.suit.text = suitAndRank
+
+            val numberChangedListener = ValueChangedListener{ spinnerValue: Int, actionEnum: ActionEnum ->
+                cardModel.numberSelected = spinnerValue
+                onSpinnerUpdated(cardModel)
+            }
+
+            binding.numberPicker.valueChangedListener = numberChangedListener
 
             Picasso.get().load(cardModel.cardModel.getImagePath()).placeholder(R.drawable.card_back).error(R.drawable.card_back).into(binding.cardImage)
             itemView.setOnClickListener{onCardModelClicked(cardModel)}

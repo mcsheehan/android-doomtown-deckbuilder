@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.travijuu.numberpicker.library.Enums.ActionEnum
+import com.travijuu.numberpicker.library.Interface.ValueChangedListener
 import kotlinx.android.synthetic.main.build_deck.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.adapters.DescriptiveCardAdapter
@@ -38,18 +41,26 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    private val args: BuildDeckFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
+        val deckEntity = args.deck
+        deckEntity.deckname
 
         build_deck_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
-        val clickListener : (CardModelAndNumberSelected) -> Unit = {
-            val bundle = Bundle()
-            bundle.putParcelable(null, it.cardModel)
-            Navigation.findNavController(view).navigate(R.id.action_buildDeck_to_individualCardView, bundle)
+        val onCardSelected : (CardModelAndNumberSelected) -> Unit = {
+            val navDirection = BuildDeckFragmentDirections.actionBuildDeckToIndividualCardView(it.cardModel)
+            Navigation.findNavController(view).navigate(navDirection)
         }
 
-        adapter = DescriptiveCardAdapter(clickListener)
+        val spinnerUpdated : (CardModelAndNumberSelected) -> Unit = {
+            // Update the card to have the new number of cards specified.
+            
+        }
+
+        adapter = DescriptiveCardAdapter(onCardSelected, spinnerUpdated)
         build_deck_recycler.adapter = adapter
 
         viewModel.allCardsFromSelectedPacks.observe(viewLifecycleOwner, Observer{

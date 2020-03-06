@@ -25,9 +25,9 @@ class CardViewerFragment : Fragment(R.layout.card_grid_view) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val clickListener: (CardModel) -> Unit = {currentCard ->
-            val bundle = Bundle()
-            bundle.putParcelable(null, currentCard)
-            Navigation.findNavController(view).navigate(R.id.action_cardViewerFragment_to_individualCardViewer, bundle)}
+            val navDirections = CardViewerFragmentDirections.actionCardViewerFragmentToIndividualCardViewer(currentCard)
+            Navigation.findNavController(view).navigate(navDirections)
+        }
 
         cardAdapter = CardAdapter(clickListener)
         card_recycler.adapter = cardAdapter
