@@ -45,13 +45,13 @@ class ChooseIdentityFragment : Fragment(R.layout.choose_identity)
         }
         else {
             val selectedCard = outfitCardList[position]
-            val description = ""
+            val description = description.text.toString()
             val deckName = deckName.text.toString()
 
             val newDeck = DeckEntity(identityCardId = selectedCard.cardId, deckname = deckName, description = description)
 
             viewModel.createNewDeck(newDeck).invokeOnCompletion {
-                val navDir = ChooseIdentityFragmentDirections.actionCreateNewDeckToPlaceholder(newDeck)
+                val navDir = ChooseIdentityFragmentDirections.actionCreateNewDeckToBuildDeck(newDeck)
                 Navigation.findNavController(view).navigate(navDir)
             }
         }

@@ -44,22 +44,9 @@
         android:label="Choose your identity"
         tools:layout="@layout/choose_identity">
         <action
-            android:id="@+id/action_createNewDeck_to_placeholder"
-            app:destination="@id/enterDescription" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/enterDescription"
-        android:name="net.marksheehan.doomtowndeckbuilder.ui.EnterDescriptionFragment"
-        android:label="Enter deck description"
-        tools:layout="@layout/enter_description_layout">
-        <action
-            android:id="@+id/action_placeholder_to_buildDeck"
+            android:id="@+id/action_createNewDeck_to_buildDeck"
             app:destination="@id/buildDeck"
             app:popUpTo="@id/viewCreatedDecks" />
-        <argument
-            android:name="card"
-            app:argType="net.marksheehan.doomtowndeckbuilder.database.entitites.DeckEntity" />
     </fragment>
 
     <fragment
