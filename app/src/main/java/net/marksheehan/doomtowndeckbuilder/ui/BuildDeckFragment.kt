@@ -11,8 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.travijuu.numberpicker.library.Enums.ActionEnum
-import com.travijuu.numberpicker.library.Interface.ValueChangedListener
 import kotlinx.android.synthetic.main.build_deck.*
 import net.marksheehan.doomtowndeckbuilder.R
 import net.marksheehan.doomtowndeckbuilder.adapters.DescriptiveCardAdapter
@@ -46,7 +44,6 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         val deckEntity = args.deck
-        deckEntity.deckname
 
         build_deck_recycler.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
@@ -56,8 +53,7 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
         }
 
         val spinnerUpdated : (CardModelAndNumberSelected) -> Unit = {
-            // Update the card to have the new number of cards specified.
-            
+            //Submit this to the db or viewmodel
         }
 
         adapter = DescriptiveCardAdapter(onCardSelected, spinnerUpdated)
@@ -66,6 +62,10 @@ class BuildDeckFragment : Fragment(R.layout.build_deck) {
         viewModel.allCardsFromSelectedPacks.observe(viewLifecycleOwner, Observer{
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
+        })
+
+        viewModel.allCardsAndNumberChosenForDeck(deckEntity.deckId).observe(viewLifecycleOwner, Observer{
+            // Add updating the spinner to the deck number selected.
         })
     }
 

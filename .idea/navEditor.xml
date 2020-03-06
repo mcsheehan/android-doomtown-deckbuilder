@@ -65,8 +65,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="298" />
-                            <option name="y" value="430" />
+                            <option name="x" value="253" />
+                            <option name="y" value="344" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -77,13 +77,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="503" />
-                            <option name="y" value="226" />
+                            <option name="x" value="494" />
+                            <option name="y" value="208" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_chooseIdentity_to_chooseCards">
+                            <entry key="action_createNewDeck_to_buildDeck">
                               <value>
                                 <LayoutPositions />
                               </value>
